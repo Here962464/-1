@@ -148,7 +148,7 @@ Page({
     }else{
       _this.setData({
         hideClassify: false,
-        calssNameCheck:"文集名称不能为空！"
+        classNameCheck:"文集名称不能为空！"
       });
     }
   }, 
@@ -205,6 +205,7 @@ Page({
   },
   //确认  
   confirmRename: function (e) {
+    console.log("confirm")
     var _this = this;
     console.log(this.data.newClassifyName);
     if (this.data.newClassifyName != "") {
@@ -217,18 +218,24 @@ Page({
         duration: 10000
       });
     } else {
+      console.log(222)
       _this.setData({
         renameClass: false,
-        calssNameCheck: "文集名称不能为空！"
+        newClassNameCheck: "文集名称不能为空！"
       });
     }
   },
   // 获取input的内容
   getRename: function (e) {
     console.log(e.detail.value);
+    console.log(1111);
     this.setData({
       newClassifyName: e.detail.value
     })
+  },
+  // 删除一级分类
+  deleteBlogClass: function (e) {
+    console.log(e.currentTarget.dataset.index);
   },
   // 新建二级分类
   creatNewType: function (e) {
@@ -329,14 +336,6 @@ Page({
         console.log(_this.data.blogtypeList)
       }
     })
-  },
-  // 修改分类名称
-  editBlogClass: function(e){
-    console.log(e.currentTarget.dataset.index);
-  },
-  // 删除一级分类
-  deleteBlogClass: function(e){
-    console.log(e.currentTarget.dataset.index);
   },
   // 加载博客列表
   readyToLoad: function (pageSize) {

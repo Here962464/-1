@@ -33,10 +33,10 @@
       <button class='creat' hover-class='hoverClass'  bindtap="creatNewClass">新建文集+</button>   
     </view> 
     <modal hidden="{{hideClassify}}" title="新建文集" confirm-text="确认" cancel-text="取消" bindcancel="cancleCreatClass" bindconfirm="confirmCreatClass">  
-      <input bindblur='getClassName' type='text' placeholder="{{nameCheck}}" auto-focus/> 
+      <input bindblur='getClassName' type='text' placeholder="{{classNameCheck}}" auto-focus/> 
     </modal>  
     <view wx:for="{{blogtypeList}}" class='classifyBlock'>
-      <view data-index="{{index}}" catchtap='isSons' class="classAA{{item.toggle==true?'noBorder':''}}">{{item.key}}
+      <view data-index="{{index}}" bindtap='isSons' class="classAA{{item.toggle==true?'noBorder':''}}">{{item.key}}
         <view class="{{item.toggle==true?'show':''}}editClassBox">
         <!--重命名一级分类  -->
           <image data-index="{{index}}" catchtap='renameBlogClass' class='setBlogClass' src="../../icon/rename.png"></image>
@@ -53,14 +53,14 @@
          <view class='creatSonBox'>
           <button class='creatSon' hover-class='hoverClass'  bindtap="creatNewType">添加分类+</button>
         </view>
-        <modal hidden="{{hiddType}}" title="添加分类" confirm-text="确认" cancel-text="取消" bindcancel="cancelCreatType" bindconfirm="confirmCreatType">  
-          <input bindblur='getTypeName' type='text' placeholder="{{typeCheck}}" auto-focus/> 
-        </modal>  
+        <!-- <modal hidden="{{hiddType}}" title="添加分类" confirm-text="确认" cancel-text="取消" bindcancel="cancelCreatType" bindconfirm="confirmCreatType">  
+          <input bindblur='getTypeName' type='text' placeholder="{{typeNameCheck}}" auto-focus/> 
+        </modal>   -->
         <view data-index="{{index}}" bindtap='goToBlogListType' class='blogtypeList' wx:for="{{item.value}}">{{item.blogType}}
-        <view class='editTypeBox'>
+        <!-- <view class='editTypeBox'>
           <image data-index="{{index}}" catchtap='editBlogClass' class='setBlogType' src="../../icon/rename.png"></image>
           <image data-index="{{index}}" catchtap='deleteBlogClass' class='setBlogType' src="../../icon/deleteBlogClass.png"></image>
-       </view>
+       </view> -->
         </view>
       </view>
     </view>
