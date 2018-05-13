@@ -1,0 +1,4 @@
+<view class='box'>
+  <navigator url="{{item.naviUrl}}" bindtap="{{item.tapFn}}" wx:for="{{mod}}" class='collection' wx:key="name">{{item.name}}</navigator>
+</view>
+

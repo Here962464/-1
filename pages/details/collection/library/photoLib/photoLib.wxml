@@ -1,0 +1,26 @@
+<view class="album">
+  <view class='hasAlbum' wx:if="{{!hasAlbum.has}}">
+    <view class='addAlbum'>
+      <image bindtap='addAlbum' src="../../../../icon/add.png"></image>
+  {{hasAlbum.message}}
+    </view>
+  </view>
+  <view wx:esle class='albumList'>
+    <!--滚动条实现懒加载  -->
+    <scroll-view style='height:{{scrollY}}px;' bindscrolltolower="startLoading" scroll-y="true" scroll-with-animation="true" lower-threshold> 
+    <view bindtap='addNewAlbum' class='addNewAlbum'>+</view>
+      <view wx:key="{{item.id}}" class='message' wx:for="{{hasAlbum.message}}">
+        <view  catchtap='albumDetail' id="{{item.id}}" class='albumBlock'>
+          <view id="{{item.id}}" catchtap='menu' class='setting'>
+            <image src='../../../../icon/setAlbum.png'></image>
+          </view>
+          <view class='albumName'>{{item.albumName}}</view>
+          <view class='createDate'>{{item.createDate}}</view> 
+          <view class='mask'></view>
+          <image  mode='aspectFit' class='albumCover' src='{{item.iconPath}}'></image>
+        </view>
+      </view>
+    <view wx:if="{{baseline}}" class='baseline'>-----我是有底线的-----</view>
+    </scroll-view>
+  </view>
+</view>

@@ -1,0 +1,11 @@
+<template name="floor02">
+  <view class='floor02'>
+    <navigator class='blog fl pad' url="../details/writeBlog/writeBlog">
+      <image src='../icon/add.png' class='add pad'></image><text>写博客</text></navigator>
+    <navigator class='file fl pad' url="../details/uploadFile/uploadFile">
+      <image src='../icon/add.png' class='add pad'></image><text>传文件</text></navigator>
+    <navigator class='photoes fl pad' url="../details/uploadPhoto/uploadPhoto">
+      <image src='../icon/add.png' class='add pad'></image><text>传照片</text></navigator>
+  </view>
+  <view class='space'></view>
+</template>

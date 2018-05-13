@@ -1,0 +1,88 @@
+.submit{
+  width: 100%;
+  height: 100%;
+}
+.floor1,.floor2{
+  width: 100%;
+}
+.albumName,.description{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  padding-left: 30rpx;
+  border-bottom: 2rpx solid #eee;
+}
+.floor3{
+  width: 100%;
+  height: 100rpx;
+  padding-left: 30rpx;
+  line-height: 100rpx;
+  border-bottom: 2rpx solid #eee;
+  position: relative;
+}
+.text{
+  float: left;
+}
+.iconPath{
+  width: 80rpx;
+  height: 60rpx;
+  float: right;
+  position: absolute;
+  top:50%;
+  right: 100rpx;
+  margin-top:-30rpx;
+}
+.go{
+  position: absolute;
+  top:50%;
+  right: 20rpx;
+  width: 56rpx;
+  height: 56rpx;
+  margin-top:-28rpx;
+  float: right;
+}
+.floor4{
+  height: 200rpx;
+  width: 100%;
+  position: relative;
+}
+.cancle{
+  width: 20%;
+  position: absolute;
+  top: 25%;
+  left: 30%;
+}
+.confirm{
+  width: 20%;
+  position: absolute;
+  top: 25%;
+  left: 60%;
+  color: #fff;
+  background: #409eff;
+}
+.space{
+  width: 100%;
+  height: 60rpx;
+  background: #eee;
+}
+.floor5{
+  height: 400rpx;
+  width: 100%;
+  position: relative;
+}
+.delete{
+  width: 80%;
+  height: 100rpx;
+  color: #fff;
+  background: red;
+  border: 2rpx solid red;
+  position: absolute;
+  top:50%;
+  left: 10%;
+}
+.button-hover{
+  background-color: rgba(0, 0, 0, 0.1);
+  opacity: 0.7;
+  color: #000;
+  border: 2rpx solid #ccc;
+}

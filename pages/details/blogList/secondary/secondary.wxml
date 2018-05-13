@@ -1,0 +1,30 @@
+<view class='blogTypeList'>
+  <!--重复代码  可以封装  -->
+  <scroll-view wx:if="{{hasBlog}}" style='height:{{scrollY}}px;' bindscrolltolower="startLoading" scroll-y="true" scroll-with-animation="true" lower-threshold>
+    <view data-index="{{index}}" class='blogBlock' wx:for="{{blogList}}">
+        <view class='title'>{{item.blogTitle}}</view>
+        <view class='baseBlog'>{{item.baseBlog}}</view>
+        <view class='detail'>
+          <view class='nature'>{{item.nature}}</view>
+          <view class='shareTime'>{{item.publishDate}}</view>
+          <view class='visitors'>
+            <image src="../../../icon/seen.png"></image>
+            <view>200</view>
+          </view>
+          <view class='praise'>
+            <image src='../../../icon/praise.png'></image>
+            <view>0</view>
+          </view>
+          <view class='forward'>
+            <image src='../../../icon/post.png'></image>
+            <view>500</view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{baseline}}" class='baseline'>-----我是有底线的-----</view>
+  </scroll-view>
+  <view class='hasNoBlog' wx:else>
+    <view class='addBlog'>+</view>
+    <view class='mentionContent'>您还没有创建博客，点击加号，开启你的博客之旅吧 (｡•̀ᴗ-)✧</view>
+  </view>
+</view>

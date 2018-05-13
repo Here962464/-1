@@ -1,0 +1,57 @@
+{
+  "pages": [
+    "pages/details/blogList/blogList",
+    "pages/mine/mine",
+    "pages/details/followList/followList",
+    "pages/details/fansList/fansList",
+    "pages/details/writeBlog/writeBlog",
+    "pages/details/blogList/secondary/secondary",
+    "pages/details/collection/library/photoLib/photoLib","pages/details/collection/library/photoLib/photoes/photoes","pages/details/collection/library/photoLib/photoes/photoDetails/photoDetails",
+    "pages/index/index","pages/details/collection/library/photoLib/resetAlbum/resetAlbum",   "pages/details/collection/library/photoLib/photoes/addPhotoes/addPhotoes","pages/details/collection/library/photoLib/addAlbum/addAlbum",
+    "pages/messages/messages",
+    "pages/search/search",
+    "pages/logs/logs",
+    "pages/details/loginByMail/loginByMail",
+    "pages/details/collection/collection",
+    "pages/details/setting/setting",
+    "pages/details/uploadPhoto/uploadPhoto",
+    "pages/details/uploadFile/uploadFile",    
+    "pages/details/collection/library/blogLib/blogLib",
+    "pages/details/collection/library/fileLib/fileLib",
+    "pages/details/collection/library/myPraise/myPraise"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "易享阁",
+    "navigationBarTextStyle": "#fff"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "pages/icon/home.png",
+        "selectedIconPath": "pages/icon/home-active.png"
+      },
+      {
+        "pagePath": "pages/messages/messages",
+        "text": "消息",
+        "iconPath": "pages/icon/message.png",
+        "selectedIconPath": "pages/icon/message-active.png"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "text": "发现",
+        "iconPath": "pages/icon/find.png",
+        "selectedIconPath": "pages/icon/find-active.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "pages/icon/mine.png",
+        "selectedIconPath": "pages/icon/mine-active.png"
+      }
+    ]
+  }
+}

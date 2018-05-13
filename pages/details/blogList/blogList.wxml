@@ -1,0 +1,55 @@
+<view class='blogList'>
+  <view class='menu'>
+    <view style='background:{{articleBgColor}}; color:{{articleFontColor}};' bindtap='switchBlog' class='articles'>博客</view>
+    <view style='background:{{groupBgColor}}; color:{{groupFontColor}};' bindtap='switchCorpus' class='groups'>文集</view>
+  </view>
+  <view class='articleList' wx:if="{{isblog}}">
+    <scroll-view style='height:{{scrollY}}px;' bindscrolltolower="startLoading" scroll-y="true" scroll-with-animation="true" lower-threshold>
+      <view data-index="{{index}}" class='blogBlock' wx:for="{{blogList}}">
+        <view class='title'>{{item.blogTitle}}</view>
+        <view class='baseBlog'>{{item.baseBlog}}</view>
+        <view class='detail'>
+          <view class='nature'>{{item.nature}}</view>
+          <view class='shareTime'>{{item.publishDate}}</view>
+          <view class='visitors'>
+            <image src="../../icon/seen.png"></image>
+            <view>200</view>
+          </view>
+          <view class='praise'>
+            <image src='../../icon/praise.png'></image>
+            <view>0</view>
+          </view>
+          <view class='forward'>
+            <image src='../../icon/post.png'></image>
+            <view>500</view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{baseline}}" class='baseline'>-----我是有底线的-----</view>
+    </scroll-view>
+  </view>
+  <view wx:else class='classify'>
+    <view>  
+      <button class='creat' hover-class='hoverClass'  bindtap="creatNewClass">新建文集+</button>   
+    </view>  
+    <modal hidden="{{hideClassify}}" title="新建文集" confirm-text="确认" cancel-text="取消" bindcancel="cancleCreatClass" bindconfirm="confirmCreatClass">  
+    <input bindblur='getClassName' type='text' placeholder="{{nameCheck}}" auto-focus/> 
+    </modal>  
+    <view wx:for="{{blogtypeList}}" class='classifyBlock'>
+      <view data-index="{{index}}" catchtap='isSons' class="classAA{{item.toggle==true?'noBorder':''}}">{{item.key}}
+       <image data-index="{{index}}" catchtap='editBlogClass' class='setBlogClass' src="../../icon/blogSet.png"></image>
+       <!-- <image class="imgUpOrDown" src="../../icon/up.png{{item.toggle==true?'':'.down.png'}}"></image>  -->
+      </view>
+      <view class="classAa{{item.toggle==true?'show':''}}">
+         <view class='creatSonBox'>
+          <button class='creatSon' hover-class='hoverClass'  bindtap="creatNewType">添加分类+</button>
+        </view>
+        <modal hidden="{{hiddType}}" title="添加分类" confirm-text="确认" cancel-text="取消" bindcancel="cancelCreatType" bindconfirm="confirmCreatType">  
+          <input bindblur='getTypeName' type='text' placeholder="{{typeCheck}}" auto-focus/> 
+        </modal>  
+        <view data-index="{{index}}" bindtap='goToBlogListType' class='blogtypeList' wx:for="{{item.value}}">{{item.blogType}}<image class='imgGo' src='../../icon/goToBlog.png'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

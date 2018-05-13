@@ -1,0 +1,62 @@
+.blogBlock{
+  width: 100%;
+  padding: 20rpx;
+  border-bottom: 2rpx solid #ccc;
+}
+.title{
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.baseBlog{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  font-size: 28rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+.detail{
+  font-size: 24rpx;
+  display: flex;
+}
+.nature{
+  margin-right: 20rpx;
+}
+.visitors,.praise,.forward{
+  display: flex;
+}
+.visitors image,.praise image,.forward image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 30rpx;
+  margin-right: 10rpx;
+}
+.baseline{
+  float: left;
+  width: 100%;
+  font-size: 3rpx;
+  text-align: center;
+}
+/*hasNoBlog  */
+.hasNoBlog{
+  width: 400rpx;
+  height: 400rpx;
+  margin: 50% auto;
+  align-items: center;
+  justify-content: center;
+}
+.addBlog{
+  width: 200rpx;
+  height: 200rpx;
+  border: 2rpx dashed #409eff;
+  font-size: 150rpx;
+  color: #409eff;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.mentionContent{
+  margin-top: 50rpx;
+}

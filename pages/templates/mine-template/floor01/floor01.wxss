@@ -1,0 +1,18 @@
+.floor01{
+  width: 100%;
+  padding: 10rpx 0;
+  /* box-shadow: 10rpx 30rpx 6rpx #eee; */
+}
+.floor01-item{
+  width: 20%;
+  padding: 10rpx 10rpx;
+  display: inline-block;
+}
+.floor01-item text{
+  display: block;
+  padding: 0 20rpx;
+}
+.floor01-item text.str{
+  color: #666;
+  font-size: 28rpx;
+}

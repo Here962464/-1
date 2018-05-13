@@ -1,0 +1,11 @@
+<view style='height:{{screenHeight}}px; width:{{screenWidth}}px;' class="photoDetails">
+  <view class='top'>
+    <view class='photoName'>{{albumName}}({{index}}/{{total}})</view>
+  </view>
+  <view class='imgBox'>
+    <image bindtouchstart='figerTouchStart' bindtouchmove='figerMove' bindtouchend='figerTouchEnd' class='photo' style='width:{{screenWidth}}px' mode='widthFix' src="{{imgSrc}}"></image>
+    <button class='original' plain='true'>查看原图(14.28M)</button>
+  </view>
+  <view class='bottom'>
+  </view>
+</view>

@@ -1,0 +1,89 @@
+/*公共样式  */
+.space{
+  width: 100%;
+  height: 40rpx;
+  background: #eee; 
+}
+.fl{
+  float: left;
+}
+
+.logIn{
+  font-size: 28rpx;
+  color: #409eff;
+  align-content: center;
+  align-items: center;
+  margin: 50% auto;
+}
+.wxlog{
+  width: 300rpx;
+  margin: 10rpx auto;
+  background: #409eff;
+  color: #fff;
+}
+.logIn .loginByMail{
+  width: 100%;
+  padding: 30rpx 0;
+  display: inline-block;
+  text-align: center;
+  text-decoration: underline;
+}
+/*头像信息  */
+ .logInsuccess {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 10rpx 0;
+}
+.top{
+  padding: 20rpx 20rpx;
+  width: 100%;
+  border-bottom: 2rpx solid #ccc;
+}
+.avatar {
+  width: 88rpx;
+  height: 88rpx;
+  margin: 10rpx;
+  float: left;
+  border-radius: 50%;
+}
+.info{
+  font-size:32rpx;
+  color: #666;
+  float: left;
+  padding-left: 30rpx;
+} 
+.nickName{
+  display: block;
+  padding-top: 20rpx;
+  color: #333;
+}
+.gender{
+  font-size:28rpx;
+  display: block;
+}
+@import "../templates/mine-template/floor01/floor01.wxss";
+@import "../templates/mine-template/floor02/floor02.wxss";
+.floor03,.floor04{
+  padding: 40rpx 0;
+  width: 100%;
+  border-bottom: 2rpx solid #ccc;
+  text-align: center;
+}
+.floor03 text,.floor04 text{
+  padding: 10rpx 0;
+}
+.hover-collection{
+  background: #409eff;
+  color:#fff;
+}
+.collection,.setting{
+  width: 56rpx;
+  height: 56rpx;
+  padding: 0 20rpx;
+}
+.go{
+  width: 56rpx;
+  height: 56rpx;
+  float: right;
+}

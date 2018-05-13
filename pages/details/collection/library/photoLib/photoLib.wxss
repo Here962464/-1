@@ -1,0 +1,95 @@
+.hasAlbum{
+  width: 100%;
+  font-size: 32rpx;
+  text-align: center;
+}
+.addAlbum{
+  width: 400rpx;
+  height: 400rpx;
+  margin: 50% auto;
+  text-align: center;
+}
+.addAlbum image{
+  width: 100rpx;
+  height: 100rpx;
+  margin: auto;
+}
+/*加载相册样式  */
+.baseline{
+  float: left;
+  width: 100%;
+  text-align: center;
+}
+.addNewAlbum{
+  width: 300rpx;
+  height: 260rpx;
+  float: left;
+  color: #ccc;
+  margin-top: 20rpx;
+  margin-left: 46rpx;
+  border: 2rpx dashed #ccc;
+  justify-content: center;
+  text-align: center;
+  font-size: 200rpx;
+}
+.albumBlock{
+  width: 300rpx;
+  height: 300rpx;
+  display: inherit;
+  margin-top: 20rpx;
+  position: relative;
+  float: left;
+  margin-left: 46rpx;
+}
+.setting{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  right: 10rpx;
+  top: 10rpx;
+}
+.setting image{
+  width: 36rpx;
+  height: 36rpx;
+}
+.albumBlock .albumName{
+  z-index: 1;
+  color: #fff;
+  float: none;
+  font-size: 32rpx;
+  width: 300rpx;
+  height: 100rpx;
+  line-height: 50rpx;
+  text-align: center;
+  margin-top: 70rpx;
+  display: inline-block;
+}
+.albumBlock .createDate{
+  display: inline-block;
+  z-index: 1;
+  float: none;
+  color: #fff;
+  font-size: 28rpx;
+  width: 300rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+}
+.mask{
+  width: 300rpx;
+  height: 260rpx;
+  background: #000;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.albumBlock .albumCover{
+  width: 300rpx;
+  height: 260rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+}

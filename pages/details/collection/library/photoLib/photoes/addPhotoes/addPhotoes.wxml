@@ -1,0 +1,7 @@
+<view class='add'>
+  <button bindtap='chooseImg'>选择图片</button>
+  <view class='imgBox'>
+    <image class='img' src='{{imgUrl}}'></image>
+  </view>
+  <button class='upload' disabled="{{isReady}}" bindtap="uploadPhoto">上传</button>
+</view>

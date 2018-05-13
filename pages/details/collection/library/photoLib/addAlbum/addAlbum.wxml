@@ -1,0 +1,46 @@
+<view class='createAlbum'>
+  <form bindsubmit="formSubmit">
+    <view class='box'>
+      <view class='floor1 pad'>
+        <text class='sure fl'>*</text>
+        <text class='fl alignment'>相册名称</text>
+        <input name="albumName" bindblur="albumName" placeholder-style="color:red; font-size:32rpx;" placeholder='{{nameMention}}' class='albumName fl' type='text' />
+      </view>
+      <view class='floor2 pad'>
+        <text class='alignment fl'>相册标签</text>
+        <view class='newTips fl'>
+          <view wx:key="{{unique}}" wx:if="addTips" class='newTips-item fl' wx:for="{{tipsValue}}">
+            <text class='albumTip fl'>{{item}}</text>
+            <view id="{{item}}" bindtap='startDelete' bindtouchend='endDelete' class='delete fl'>×</view>
+          </view>
+          <button wx:if="{{!toAddTips}}" bindtap='addTips' hover-class="button-hover" class='addTips fl'>+新标签</button>
+          <input focus wx:else bindblur='subTipsContent' type='text' class='tipsContent' />
+        </view>
+      </view>
+      <view wx:if="{{warnText}}" class='warnText alignment'><image src='../../../../../icon/warn.png'></image>您已添加相应的标签了哟~</view>
+      <view class='floor3 pad'>
+        <text class='fl alignment'>是否公开</text>
+        <switch name="privacySet" color='#409eff' bindchange='privacy' checked="{{pubState}}" class='public fl' />
+        <text class='psdProtection fl'>密码保护</text>
+        <switch name="psdProtection" bindchange="psdProtection" color='#409eff' class='hasPsd fl' />
+      </view>
+      <view class='floor4 pad'>
+        <text class='fl alignment'>设置密码</text>
+        <input name="psd" disabled="{{psdState}}" bindblur='getPsd' focus='{{psdFocus}}' style='background:{{psdBackground}};' class='albumPsd fl' password />
+      </view>
+      <view class='floor5 pad'>
+        <text class='sure fl'>*</text>
+        <text class='fl alignment'>相册描述</text>
+        <textarea name="albumDescription" bindblur='albumDescription' placeholder-style="color:red; font-size:32rpx;" placeholder='{{descripMention}}'class='albumDescrip fl' />
+      </view>
+      <view class='floor6 pad'>
+        <view class='cover fl' bindtap='chooseCover'>+选择封面</view>
+        <image src="{{coverUrl}}" class='uploadImg fl'></image>
+      </view>
+      <view class='floor7 pad'>
+        <button name="cancle" bindtap='backToPhotoLib' class='cancle fl'>取消</button>
+        <button name="submit" bindtap='submitAlbum' form-type="submit" class='submit fl'>确定</button>
+      </view>
+    </view>
+  </form>
+</view>

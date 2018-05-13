@@ -1,0 +1,23 @@
+<view class="resetAlbum">
+  <form class='submit'>
+    <view class='floor1'>
+      <input bindblur="albumName" placeholder='请输入相册名称' class='albumName' value="{{albumName}}" />
+    </view>
+    <view class='floor2'>
+      <input bindblur='description' placeholder='描述' class='description' value="{{description}}" />
+    </view>
+    <view bindtap='changeCover' class='floor3'>
+      <text class='text'>更换封面</text>
+      <image class='go' src='../../../../../icon/go.png'></image>
+      <image class='iconPath' src="{{iconPath}}"></image>
+    </view>
+    <view class='floor4'>
+      <button name="cancle" bindtap='backToPhotoLib' class='cancle fl'>取消</button>
+      <button name="submit" bindtap='confirmMessage' form-type="submit" class='confirm'>保存</button>
+    </view>
+    <view class='space'></view>   
+    <view class='floor5'>
+      <button bindtap='deleteAlbum' hover-class="button-hover" class='delete'>删除相册</button>
+    </view>
+  </form>
+</view>

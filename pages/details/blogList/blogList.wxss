@@ -1,0 +1,145 @@
+.menu{
+  padding: 20rpx 0;
+  height: 60rpx;
+  flex-direction: row;
+  justify-content: center;
+  display: flex;
+}
+.groups{
+  text-align: center;
+  width: 40%;
+  font-size: 32rpx;
+  height: 60rpx;
+  display: flex;
+  align-items:center ;
+  border-top-right-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+  justify-content: center;
+}
+.articles{
+  text-align: center;
+  width: 40%;
+  font-size: 32rpx;
+  border-bottom-left-radius: 10rpx;
+  border-top-left-radius: 10rpx;
+  height: 60rpx;
+  display: flex;
+  align-items:center ;
+  justify-content: center;
+}
+.blogBlock{
+  width: 100%;
+  padding: 20rpx;
+  border-bottom: 2rpx solid #ccc;
+}
+.title{
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.baseBlog{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  font-size: 28rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+.detail{
+  font-size: 24rpx;
+  display: flex;
+}
+.nature{
+  margin-right: 20rpx;
+}
+.visitors,.praise,.forward{
+  display: flex;
+}
+.visitors image,.praise image,.forward image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 30rpx;
+  margin-right: 10rpx;
+}
+.baseline{
+  width: 100%;
+  font-size: 32rpx;
+  text-align: center;
+  padding: 40rpx 0;
+}
+/*文集模块  */
+.classifyBlock{
+  background: #eee;
+}
+.creat{
+  width: 40%;
+  margin-top: 20rpx;
+  padding: 5rpx 0;
+  margin-bottom: 20rpx;
+  background: #eee;
+  color: #000;
+  font-size: 32rpx;
+}
+.creatSonBox{
+  padding: 10rpx;
+  border-bottom: 2rpx dashed #ccc;
+}
+.creatSon{
+  width: 35%;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  background: #eee;
+  color: #000;
+  font-size: 28rpx;
+}
+.hoverClass{
+  background: #ccc;
+  color: #000;
+}
+.classAA{
+  padding:40rpx 20rpx;
+  position: relative; 
+  border-bottom: 2rpx dashed #ccc;
+}
+.classAAnoBorder{
+  padding:40rpx 20rpx;
+  position: relative; 
+  border-bottom: none;
+}
+.classAa{
+  display: none;
+}
+.blogtypeList{
+  padding: 30rpx 60rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  position: relative;
+}
+.classAashow{
+  display: block;
+  background: #fff;
+}
+.imgUpOrDown{
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  margin-top:-20rpx;
+  right: 40rpx;
+  top: 50%;
+}
+.setBlogClass{
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  margin-top:-20rpx;
+  right: 40rpx;
+  top: 50%;
+}
+.imgGo{
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  margin-top:-20rpx;
+  right: 40rpx;
+  top: 50%;
+}

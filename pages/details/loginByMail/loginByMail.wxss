@@ -1,0 +1,62 @@
+/* pages/login/details.wxss */
+.Login{ 
+  width:90%; 
+  margin:auto; 
+  overflow:hidden; 
+  padding-top:40rpx;}
+#my input{
+    border: 2rpx solid black;
+    float: left;
+    margin-left: 10rpx;
+}
+/*page{
+    margin-top: 20px;
+}*/
+.section{
+    margin-top: 40rpx;
+    margin-left:10rpx;
+    display: flex;
+    flex-direction: row;
+    width:95%; 
+    overflow:hidden; 
+    overflow:hidden;
+}
+.section__title{
+    width:25%; 
+    float:left; 
+    font-size:32rpx; 
+    line-height:80rpx; 
+    color:#666;
+}
+.section input{
+    border: 2rpx solid #DFDFDF; 
+    height:60rpx; 
+    line-height:60rpx; 
+    width:95%; 
+    padding-left: 10rpx; 
+    -webkit-appearance: none; 
+    -webkit-box-flex: 1; 
+    -webkit-flex: 1; 
+    flex: 1; 
+    border-radius: 0; 
+    -webkit-rtl-ordering: logical; 
+    -webkit-user-select: text; 
+    cursor: auto; 
+    background-color: white; 
+    font-size:28rpx; 
+    line-height:60rpx;
+}
+#button button{
+    display:block; 
+    margin:auto; 
+    background:#409eff; 
+    font-size:32rpx; 
+    line-height:80rpx; 
+    border:0; 
+    color:#FFF; 
+    width:97%; 
+    margin:auto;
+    margin-top:40rpx; 
+    margin-bottom:20rpx;
+    border-radius:10rpx;
+}

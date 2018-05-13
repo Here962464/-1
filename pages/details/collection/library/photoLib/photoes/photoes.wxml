@@ -1,0 +1,21 @@
+<view>
+  <view class='hasNoPhoto' wx:if="{{!hasPhoto.has}}">
+    <view bindtap='uploadPhoto' class='add'>+</view>
+    <text class='empty'>
+      相册里空空空空如也~
+      点击上传精美图片
+    </text>
+  </view>
+<!--先写简单一点  等你有时间了一定要去研究QQ空间那个相册的细节功能，真的很全，仿照QQ空间完善功能！  -->
+  <view wx:else>
+    <scroll-view style='height:{{scrollY}}px;' bindscrolltolower="startLoading" scroll-y="true" scroll-with-animation="true" lower-threshold>
+      <navigator url='addPhotoes/addPhotoes' bindtap='uploadPhoto' class='add'>+</navigator>
+      <view bindtap='getIndex' data-index="{{index}}" bindlongtap="menu" class='photoBlock' wx:key="{{item.id}}" wx:for="{{hasPhoto.messeage}}">
+        <image id="{{item.id}}" style='display:{{display}};' bindtap='deletePhoto' class='deleteIcon' src='{{select}}'></image>
+        <image bindtap='checkDetails' id="{{item.id}}" mode='aspectFit' lazy-load="true" class='photo' src='{{item.photoPath}}'></image>
+        <!-- <text class='addTime'>{{item.addTime}}</text> -->
+      </view>
+      <view wx:if="{{baseline}}" class='baseline'>-----我是有底线的-----</view>
+    </scroll-view>
+  </view>
+</view>

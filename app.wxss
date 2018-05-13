@@ -1,0 +1,9 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  font-family: "微软雅黑";
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+} 
