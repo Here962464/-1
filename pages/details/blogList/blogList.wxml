@@ -31,13 +31,22 @@
   <view wx:else class='classify'>
     <view>  
       <button class='creat' hover-class='hoverClass'  bindtap="creatNewClass">新建文集+</button>   
-    </view>  
+    </view> 
     <modal hidden="{{hideClassify}}" title="新建文集" confirm-text="确认" cancel-text="取消" bindcancel="cancleCreatClass" bindconfirm="confirmCreatClass">  
-    <input bindblur='getClassName' type='text' placeholder="{{nameCheck}}" auto-focus/> 
+      <input bindblur='getClassName' type='text' placeholder="{{nameCheck}}" auto-focus/> 
     </modal>  
     <view wx:for="{{blogtypeList}}" class='classifyBlock'>
       <view data-index="{{index}}" catchtap='isSons' class="classAA{{item.toggle==true?'noBorder':''}}">{{item.key}}
-       <image data-index="{{index}}" catchtap='editBlogClass' class='setBlogClass' src="../../icon/blogSet.png"></image>
+        <view class="{{item.toggle==true?'show':''}}editClassBox">
+        <!--重命名一级分类  -->
+          <image data-index="{{index}}" catchtap='renameBlogClass' class='setBlogClass' src="../../icon/rename.png"></image>
+          <!--弹出框  -->
+          <modal hidden="{{renameClass}}" title="重命名" confirm-text="确认" cancel-text="取消" bindcancel="cancleRename" bindconfirm="confirmRename">  
+            <input bindblur='getRename' type='text' placeholder="{{newClassNameCheck}}" auto-focus/> 
+          </modal>  
+        <!--删除一级分类  -->
+          <image data-index="{{index}}" catchtap='deleteBlogClass' class='setBlogClass' src="../../icon/deleteBlogClass.png"></image>
+        </view>
        <!-- <image class="imgUpOrDown" src="../../icon/up.png{{item.toggle==true?'':'.down.png'}}"></image>  -->
       </view>
       <view class="classAa{{item.toggle==true?'show':''}}">
@@ -47,7 +56,11 @@
         <modal hidden="{{hiddType}}" title="添加分类" confirm-text="确认" cancel-text="取消" bindcancel="cancelCreatType" bindconfirm="confirmCreatType">  
           <input bindblur='getTypeName' type='text' placeholder="{{typeCheck}}" auto-focus/> 
         </modal>  
-        <view data-index="{{index}}" bindtap='goToBlogListType' class='blogtypeList' wx:for="{{item.value}}">{{item.blogType}}<image class='imgGo' src='../../icon/goToBlog.png'></image>
+        <view data-index="{{index}}" bindtap='goToBlogListType' class='blogtypeList' wx:for="{{item.value}}">{{item.blogType}}
+        <view class='editTypeBox'>
+          <image data-index="{{index}}" catchtap='editBlogClass' class='setBlogType' src="../../icon/rename.png"></image>
+          <image data-index="{{index}}" catchtap='deleteBlogClass' class='setBlogType' src="../../icon/deleteBlogClass.png"></image>
+       </view>
         </view>
       </view>
     </view>

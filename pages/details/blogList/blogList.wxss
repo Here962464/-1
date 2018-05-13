@@ -119,21 +119,28 @@
   display: block;
   background: #fff;
 }
-.imgUpOrDown{
+/* .imgUpOrDown{
   width: 40rpx;
   height: 40rpx;
   position: absolute;
   margin-top:-20rpx;
   right: 40rpx;
+  top: 50%;
+} */
+.editClassBox,.editTypeBox{
+  display: none;
+}
+.showeditClassBox,.showeditTypeBox{
+  height: 40rpx;
+  position: absolute;
+  margin-top:-20rpx;
+  right: 0rpx;
   top: 50%;
 }
-.setBlogClass{
+.setBlogClass,.setBlogType{
   width: 40rpx;
   height: 40rpx;
-  position: absolute;
-  margin-top:-20rpx;
-  right: 40rpx;
-  top: 50%;
+  margin-right: 40rpx;
 }
 .imgGo{
   width: 40rpx;

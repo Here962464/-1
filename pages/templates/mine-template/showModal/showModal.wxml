@@ -1,0 +1,5 @@
+<template class="showModal">
+  <modal hidden="{{hideState}}" title="{{title}}" confirm-text="确认" cancel-text="取消" bindcancel="cancleFn" bindconfirm="confirmFn">  
+    <input bindblur='getInputContent' type='text' placeholder="{{mention}}" auto-focus/> 
+  </modal>  
+</template>
