@@ -22,7 +22,7 @@ Page({
     // 导航样式
     articleBgColor:"#409eff",
     articleFontColor:"#fff",
-    groupBgColor: "#eee",
+    groupBgColor: "#F1F1F1",
     groupFontColor: "#000",
     article:true,
     group:false,
@@ -40,10 +40,12 @@ Page({
     renameClass: true,
     newClassifyName: "",
     newClassNameCheck: "请输入文集名称",
+    oldClassName:"",
     // 重命名二级分类
     renameType: true,
     newTypeName: "",
     newTypeNameCheck: "请输入分类名称",
+    oldTypeName:""
   },
   /**
    * 生命周期函数--监听页面加载
@@ -69,7 +71,7 @@ Page({
       this.setData({
         articleBgColor: "#409eff",
         articleFontColor: "#fff",
-        groupBgColor: "#eee",
+        groupBgColor: "#F1F1F1",
         groupFontColor: "#000"
       })
     }
@@ -85,7 +87,7 @@ Page({
     })
     if (this.data.group) {
       this.setData({
-        articleBgColor: "#eee",
+        articleBgColor: "#F1F1F1",
         articleFontColor: "#000",
         groupBgColor: "#409eff",
         groupFontColor: "#fff"
@@ -192,23 +194,32 @@ Page({
     })
   },
   // 重命名一级分类
-  renameBlogClass: function () {
+  renameBlogClass: function (e) {
+    console.log(e.currentTarget.dataset.index);
+    var tempIndex = e.currentTarget.dataset.index;
+    var tempName = this.data.blogtypeList[tempIndex].key;
     this.setData({
-      renameClass: !this.data.renameClass
+      renameClass: !this.data.renameClass,
+      oldClassName: tempName
     })
   },
   //取消按钮  
-  cancleRename: function () {
+  cancleRenameClass: function () {
     this.setData({
       renameClass: true
     });
   },
   //确认  
-  confirmRename: function (e) {
-    console.log("confirm")
+  confirmRenameClass: function (e) {
     var _this = this;
-    console.log(this.data.newClassifyName);
-    if (this.data.newClassifyName != "") {
+    var oldName = this.data.oldClassName;
+    var newName = this.data.newClassifyName;
+    if (newName == "") {
+      _this.setData({
+        renameClass: false,
+        newClassNameCheck: "文集名称不能为空！"
+      });
+    } else if (newName != "" && newName != oldName){
       _this.setData({
         renameClass: true
       });
@@ -217,25 +228,87 @@ Page({
         icon: 'loading',
         duration: 10000
       });
-    } else {
-      console.log(222)
+      this.renameClassFn(oldName,newName);
+    } else if (newName == oldName){
       _this.setData({
-        renameClass: false,
-        newClassNameCheck: "文集名称不能为空！"
+        renameClass: true
       });
+      console.log("xiangdeng")
     }
   },
   // 获取input的内容
-  getRename: function (e) {
+  getRenameClass: function (e) {
     console.log(e.detail.value);
-    console.log(1111);
     this.setData({
       newClassifyName: e.detail.value
     })
   },
+  // 发请求修改一级分类
+  renameClassFn: function(oldClass,newClass){
+    var _this = this;
+    var map = {};
+    //要更新哪一个分类名称
+    map['classifyOld'] = oldClass;
+    //要更新后的一级分类名称
+    map['classify'] = newClass;
+    var mapString = JSON.stringify(map).slice(1);
+    var value = mapString.substr(0, mapString.length - 1);
+    wx.request({
+      url: blogUrl + "wx_blogtype/updateFirstClassBlogType?value="+value,
+      success: function(res){
+        wx.hideToast();
+        console.log(res);
+        if(res.data.code == 1){
+          wx.showToast({
+            title: '修改成功',
+            icon:"success",
+            duration:1000
+          })
+        }else{
+          wx.showToast({
+            title: '失败了o(╥﹏╥)o',
+            icon: "loading",
+            duration: 2000
+          })
+        }
+        _this.loadcroups();
+      }
+    })
+
+  },
   // 删除一级分类
   deleteBlogClass: function (e) {
+    var _this = this;
     console.log(e.currentTarget.dataset.index);
+    var tempIndex = e.currentTarget.dataset.index;
+    var tempName = this.data.blogtypeList[tempIndex].key;
+    wx.showModal({
+      title: '删除文集',
+      content: '确认删除本文集，并清空文集里所有博客',
+      confirmText: "删除",
+      success: function(){
+        wx.showToast({
+          title: '删除中...',
+          icon:"loading",
+          duration:10000
+        })
+        wx.request({
+          url: blogUrl + 'wx_blogtype/deleteBlogClassify?value=' + tempName,
+          success:function(res){
+            wx.hideToast();
+            console.log(res);
+            if(res.data.code == 1){
+              wx.showToast({
+                title: '删除成功！',
+                icon:"success",
+                duration:2000
+              })
+              _this.loadcroups();
+            }
+          }
+        })
+      }
+    })
   },
   // 新建二级分类
   creatNewType: function (e) {
@@ -311,7 +384,124 @@ Page({
       }
     })
   },
-  // 发请求加载博客列表
+  // 重命名二级分类
+  editBlogType: function (e) {
+    console.log(e.currentTarget.dataset.index);
+    console.log(this.data.thisIndex);
+    var tempIndex = e.currentTarget.dataset.index;
+    var tempName = this.data.blogtypeList[tempIndex].key;
+    this.setData({
+      renameType: !this.data.renameType,
+      oldTypeName: tempName
+    })
+  },
+  //取消按钮  
+  cancleRenameType: function () {
+    this.setData({
+      renameType: true
+    });
+  },
+  //确认  
+  confirmRenameType: function (e) {
+    var _this = this;
+    var oldName = this.data.oldClassName;
+    var newName = this.data.newClassifyName;
+    if (newName == "") {
+      _this.setData({
+        renameClass: false,
+        newClassNameCheck: "文集名称不能为空！"
+      });
+    } else if (newName != "" && newName != oldName) {
+      _this.setData({
+        renameClass: true
+      });
+      wx.showToast({
+        title: '加载中',
+        icon: 'loading',
+        duration: 10000
+      });
+      this.renameClassFn(oldName, newName);
+    } else if (newName == oldName) {
+      _this.setData({
+        renameClass: true
+      });
+    }
+  },
+  // 获取input的内容
+  getRenameType: function (e) {
+    console.log(e.detail.value);
+    this.setData({
+      newClassifyName: e.detail.value
+    })
+  },
+  // 发请求修改二级分类
+  renameTypeFn: function (oldClass, newClass) {
+    // var _this = this;
+    // var map = {};
+    // //要更新哪一个分类名称
+    // map['classifyOld'] = oldClass;
+    // //要更新后的一级分类名称
+    // map['classify'] = newClass;
+    // var mapString = JSON.stringify(map).slice(1);
+    // var value = mapString.substr(0, mapString.length - 1);
+    // wx.request({
+    //   url: blogUrl + "wx_blogtype/updateFirstClassBlogType?value=" + value,
+    //   success: function (res) {
+    //     wx.hideToast();
+    //     console.log(res);
+    //     if (res.data.code == 1) {
+    //       wx.showToast({
+    //         title: '修改成功',
+    //         icon: "success",
+    //         duration: 1000
+    //       })
+    //     } else {
+    //       wx.showToast({
+    //         title: '失败了o(╥﹏╥)o',
+    //         icon: "loading",
+    //         duration: 2000
+    //       })
+    //     }
+    //     _this.loadcroups();
+    //   }
+    // })
+
+  },
+  // 删除二级分类
+  deleteBlogType: function (e) {
+    // var _this = this;
+    console.log(e.currentTarget.dataset.index);
+    // var tempIndex = e.currentTarget.dataset.index;
+    // var tempName = this.data.blogtypeList[tempIndex].key;
+    // wx.showModal({
+    //   title: '删除文集',
+    //   content: '确认删除本文集，并清空文集里所有博客',
+    //   confirmText: "删除",
+    //   success: function () {
+    //     wx.showToast({
+    //       title: '删除中...',
+    //       icon: "loading",
+    //       duration: 10000
+    //     })
+    //     wx.request({
+    //       url: blogUrl + 'wx_blogtype/deleteBlogClassify?value=' + tempName,
+    //       success: function (res) {
+    //         wx.hideToast();
+    //         console.log(res);
+    //         if (res.data.code == 1) {
+    //           wx.showToast({
+    //             title: '删除成功！',
+    //             icon: "success",
+    //             duration: 2000
+    //           })
+    //           _this.loadcroups();
+    //         }
+    //       }
+    //     })
+    //   }
+    // })
+  },
+  // 发请求加载一级分类
   loadcroups: function(){
     var _this = this;
     var map = {};

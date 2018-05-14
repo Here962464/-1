@@ -113,20 +113,34 @@ Page({
       confirmText:"删除",
       success: function(){
         wx.showToast({
-          title: '删除成功！',
-          icon:"success",
-          duration:2000
+          title: '删除中...',
+          icon: "loading",
+          duration: 10000
         })
         wx.request({
           url: albumUrl +'wx_album/deleteAlbumById?value='+Id,
           success:function(res){
-            console.log(res);
-            // 延迟刷新相册
-            setTimeout(function(){
-              wx.redirectTo({
-                url: '../photoLib',
+            wx.hideToast();
+            if(res.data.code == 1){
+              wx.showToast({
+                title: '删除成功！',
+                icon: "success",
+                duration: 2000
               })
-            },2000)
+              console.log(res);
+              // 延迟刷新相册
+              setTimeout(function () {
+                wx.redirectTo({
+                  url: '../photoLib',
+                })
+              }, 2000)
+            }else{
+              wx.showToast({
+                title: '失败了o(╥﹏╥)o',
+                icon: "loading",
+                duration: 2000
+              })
+            }
           },
           fail:function(res){
 
