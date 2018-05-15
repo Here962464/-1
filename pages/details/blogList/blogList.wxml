@@ -63,8 +63,8 @@
          <view class='showeditTypeBox'>
             <image data-index="{{index}}" catchtap='editBlogType' class='setBlogType' src="../../icon/rename.png"></image>
             <!--弹出框  -->
-            <modal hidden="{{renameType}}" title="重命名" confirm-text="确认" cancel-text="取消" bindcancel="cancleRenameType" bindconfirm="confirmRenameType"> 
-              <input value="{{oldTypeName}}" bindblur='getRenameTYpe' type='text' placeholder="{{newTypeNameCheck}}" auto-focus />  
+            <modal catchtap="hahaha" hidden="{{renameType}}" title="重命名" confirm-text="确认" cancel-text="取消" bindcancel="cancleRenameType" bindconfirm="confirmRenameType"> 
+              <input value="{{oldTypeName}}" bindblur='getRenameType' type='text' placeholder="{{newTypeNameCheck}}" auto-focus />  
             </modal>  
             <!-- 删除二级分类 -->
             <image data-index="{{index}}" catchtap='deleteBlogType' class='setBlogType' src="../../icon/deleteBlogClass.png"></image>

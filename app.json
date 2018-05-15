@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/details/blogList/blogList",
     "pages/mine/mine",
+    "pages/details/blogList/blogList",
     "pages/details/followList/followList",
     "pages/details/fansList/fansList",
     "pages/details/writeBlog/writeBlog",

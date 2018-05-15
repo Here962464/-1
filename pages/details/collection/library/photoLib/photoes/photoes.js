@@ -21,6 +21,11 @@ Page({
       display:"block",
     })
   },
+  cancleDelete: function(){
+    this.setData({
+      display: "none",
+    })
+  },
   deletePhoto: function(e){
     var _this = this;
     var albumIdd = app.globalData.albumId;
@@ -33,24 +38,28 @@ Page({
     wx.showModal({
       title: '删除照片',
       content: '确定删除该照片',
-      success: function(){
-        wx.request({
-          url: albumUrl +'wx_photo/deletePhoto?albumId=' + albumIdd + "&photoArrayList=" + photoIdd
-          ,
-          method: "POST",
-          success: function (res) {
-            wx.showToast({
-              title: '删除成功！',
-              duration:1000,
-              icon:"success"
-            })
-            // 延时刷新相册列表
-            setTimeout(function(){
-              console.log(res);
-              _this.readyToLoad(_this.data.pageSize);
-            },1000)
-          }
-        })
+      success: function(res){
+        if(res.confirm){
+          wx.request({
+            url: albumUrl + 'wx_photo/deletePhoto?albumId=' + albumIdd + "&photoArrayList=" + photoIdd
+            ,
+            method: "POST",
+            success: function (res) {
+              wx.showToast({
+                title: '删除成功！',
+                duration: 1000,
+                icon: "success"
+              })
+              // 延时刷新相册列表
+              setTimeout(function () {
+                console.log(res);
+                _this.readyToLoad(_this.data.pageSize);
+              }, 1000)
+            }
+          })
+        }else{
+          console.log("用户点击取消")
+        }
       }
     })
     console.log(e)
@@ -105,6 +114,9 @@ Page({
     app.globalData.photoId = e.currentTarget.id;
     wx.navigateTo({
       url: 'photoDetails/photoDetails',
+    })
+    this.setData({
+      display: "none",
     })
   },
   /**

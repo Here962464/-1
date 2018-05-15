@@ -111,41 +111,45 @@ Page({
       title: '删除相册',
       content: '确定删除本相册，并清空里面的所有照片',
       confirmText:"删除",
-      success: function(){
-        wx.showToast({
-          title: '删除中...',
-          icon: "loading",
-          duration: 10000
-        })
-        wx.request({
-          url: albumUrl +'wx_album/deleteAlbumById?value='+Id,
-          success:function(res){
-            wx.hideToast();
-            if(res.data.code == 1){
-              wx.showToast({
-                title: '删除成功！',
-                icon: "success",
-                duration: 2000
-              })
-              console.log(res);
-              // 延迟刷新相册
-              setTimeout(function () {
-                wx.redirectTo({
-                  url: '../photoLib',
+      success: function(res){
+        if(res.confirm){
+          wx.showToast({
+            title: '删除中...',
+            icon: "loading",
+            duration: 10000
+          })
+          wx.request({
+            url: albumUrl + 'wx_album/deleteAlbumById?value=' + Id,
+            success: function (res) {
+              wx.hideToast();
+              if (res.data.code == 1) {
+                wx.showToast({
+                  title: '删除成功！',
+                  icon: "success",
+                  duration: 2000
                 })
-              }, 2000)
-            }else{
-              wx.showToast({
-                title: '失败了o(╥﹏╥)o',
-                icon: "loading",
-                duration: 2000
-              })
-            }
-          },
-          fail:function(res){
+                console.log(res);
+                // 延迟刷新相册
+                setTimeout(function () {
+                  wx.redirectTo({
+                    url: '../photoLib',
+                  })
+                }, 2000)
+              } else {
+                wx.showToast({
+                  title: '失败了o(╥﹏╥)o',
+                  icon: "loading",
+                  duration: 2000
+                })
+              }
+            },
+            fail: function (res) {
 
-          }
-        })
+            }
+          })
+        }else{
+          console.log("用户点击取消")
+        }
       }
     })
   },
