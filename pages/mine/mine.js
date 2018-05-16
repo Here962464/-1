@@ -11,7 +11,7 @@ Page({
       avatarUrl:'',
       gender:0
     },
-    show:false,
+    show:true,
     showListUrl:[
       '../details/blogList/blogList',
       '../details/followList/followList',
@@ -31,7 +31,7 @@ Page({
     var _this = this;
     //登录
     wx.login({
-      success: function(res) {
+      success: function(){
         // 从本地缓存获取数据
         wx.getUserInfo({
           success: function (res) {
@@ -48,17 +48,17 @@ Page({
             var iconPath = res.userInfo.avatarUrl;
             console.log(res)
             _this.setData({
-              show:true,
-              userInfo:{
+              show: true,
+              userInfo: {
                 userNickname: userNickname,
                 avatarUrl: iconPath,
-                gender:gender
+                gender: gender
               }
             });
           }
         })
       }
-    });
+    })
   },
   loginByMail: function(){
     var _this = this;
@@ -71,6 +71,15 @@ Page({
    */
   onLoad: function (options) {
     var _this = this;
+    _this.wxLogIn()
+    // wx.getUserInfo({
+    //   success: function(res){
+    //     console.log(res)
+    //     if (res.errMsg == "getUserInfo:ok"){
+          
+    //     }
+    //   }
+    // })
   },
   getUserInfo: function (e) {
     

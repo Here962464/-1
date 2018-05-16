@@ -50,6 +50,7 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
+        console.log(res);
         wx.hideToast();        
         var code = res.data.code;
         console.log(res.data);
@@ -87,6 +88,7 @@ Page({
     wx.request({
       url: albumUrl +'wx_album/selectAlbumById?value=' + tempId,
       success: function(res){
+        console.log(res);
         var tempName = res.data.value.albumName;
         app.globalData.albumName = tempName;
       }

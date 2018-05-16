@@ -15,7 +15,7 @@
   </view>
   <!--总信息栏  -->
   <import src="../templates/mine-template/floor01/floor01.wxml" />
-  <template is="floor01" data="{{haha,userInfo}}" />
+  <template is="floor01" data="{{haha}}" />
   <import src="../templates/mine-template/floor02/floor02.wxml" />
   <template is="floor02" />
   <navigator url="../details/collection/collection" hover-class="none" class='floor03'>

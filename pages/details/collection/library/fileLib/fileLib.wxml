@@ -1,2 +1,24 @@
-<!--pages/details/collection/library/fileLib/fileLib.wxml-->
-<text>pages/details/collection/library/fileLib/fileLib.wxml</text>
+<view class="fileBlok">
+  <view class='topMenu'>
+    <view class='userInfo'>
+      <image class='user-left'></image>
+      <view class='user-right'>
+        <view class='nickName'></view>
+        <view class='progressBar'></view>
+        <view class='capacity'></view>
+      </view>
+    </view>
+    <view class='tools'>
+      <view class='search' catchtap='search'>分类查询</view>
+      <view class='upload' catchtap='upload'>上传文件</view>
+      <view class='creat' catchtap='creat'>新建文件夹</view>
+      <view class='oder' catchtap='oder'>排序方式</view>
+    </view>
+  </view>
+  <view class='content'>
+    <scroll-view style='height:{{scrollY}}px;' bindscrolltolower="startLoading" scroll-y="true" scroll-with-animation="true" lower-threshold>
+      
+      <view wx:if="{{baseline}}" class='baseline'>-----我是有底线的-----</view>
+    </scroll-view>
+  </view>
+</view>
