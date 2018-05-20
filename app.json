@@ -1,14 +1,16 @@
 {
   "pages": [
-    "pages/details/collection/library/photoLib/photoLib",
     "pages/mine/mine",
-"pages/details/collection/library/fileLib/fileLib",  
+    "pages/details/collection/library/photoLib/photoLib",
+    "pages/details/collection/library/fileLib/fileLib",  
     "pages/details/blogList/blogList",
     "pages/details/followList/followList",
     "pages/details/fansList/fansList",
     "pages/details/writeBlog/writeBlog",
-    "pages/details/blogList/secondary/secondary",  "pages/details/collection/library/photoLib/photoes/photoes","pages/details/collection/library/photoLib/photoes/photoDetails/photoDetails",
-    "pages/index/index","pages/details/collection/library/photoLib/resetAlbum/resetAlbum",   "pages/details/collection/library/photoLib/photoes/addPhotoes/addPhotoes","pages/details/collection/library/photoLib/addAlbum/addAlbum",
+    "pages/details/blogList/secondary/secondary",  "pages/details/collection/library/photoLib/photoes/photoes",              
+    "pages/ details/collection/library/photoLib/photoes/photoDetails/photoDetails",
+    "pages/index/index","pages/details/collection/library/photoLib/resetAlbum/resetAlbum",      
+    "pages/details/collection/library/photoLib/photoes/addPhotoes/addPhotoes","pages/details/collection/library/photoLib/addAlbum/addAlbum",
     "pages/messages/messages",
     "pages/search/search",
     "pages/logs/logs",
@@ -16,7 +18,8 @@
     "pages/details/collection/collection",
     "pages/details/setting/setting",
     "pages/details/uploadPhoto/uploadPhoto",
-    "pages/details/uploadFile/uploadFile",      "pages/details/collection/library/myPraise/myPraise"
+    "pages/details/uploadFile/uploadFile",     
+     "pages/details/collection/library/myPraise/myPraise"
   ],
   "window": {
     "backgroundTextStyle": "light",
