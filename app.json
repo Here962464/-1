@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/details/collection/library/photoLib/photoLib",
-    "pages/mine/mine",
-"pages/details/collection/library/fileLib/fileLib",  
+    "pages/details/collection/library/fileLib/fileLib",
+    "pages/mine/mine","pages/details/collection/library/photoLib/photoLib",
+    
     "pages/details/blogList/blogList",
     "pages/details/followList/followList",
     "pages/details/fansList/fansList",

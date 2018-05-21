@@ -1,23 +1,39 @@
 <view class="fileBlok">
   <view class='topMenu'>
     <view class='userInfo'>
-      <image class='user-left'></image>
+      <image src='{{userInfo.avatarUrl}}' class='user-left'></image>
       <view class='user-right'>
-        <view class='nickName'></view>
-        <view class='progressBar'></view>
-        <view class='capacity'></view>
+        <view class='nickName'>{{userInfo.nickName}}</view>
+        <view class='progressBar-mask'>
+          <progress backgroundColor="rgba(0,0,128,0.2)" activeColor="#7FFF00" active="true" percent='30' class='progressBar'></progress>
+        </view>
+        <view class='capacity'>
+          容量：170GB/1024GB  30%
+        </view>
       </view>
     </view>
     <view class='tools'>
-      <view class='search' catchtap='search'>分类查询</view>
-      <view class='upload' catchtap='upload'>上传文件</view>
-      <view class='creat' catchtap='creat'>新建文件夹</view>
-      <view class='oder' catchtap='oder'>排序方式</view>
+      <view class='search' catchtap='search'>
+        <image src='../../../../icon/search.png'></image>
+        分类查询
+      </view>
+      <view class='upload' catchtap='upload'>
+        <image src='../../../../icon/uploadFile.png'></image>
+        上传文件
+      </view>
+      <view class='creat' catchtap='creat'>
+        <image src='../../../../icon/newFolder.png'></image>
+        新建文件夹
+      </view>
     </view>
   </view>
   <view class='content'>
     <scroll-view style='height:{{scrollY}}px;' bindscrolltolower="startLoading" scroll-y="true" scroll-with-animation="true" lower-threshold>
-      
+      <view class='fileBlocks' wx:for="{{folderList}}">
+        <view class='folder'>
+          <image class='folderImg' src='{{item.imgUrl}}'></image>{{item.fileName}}
+        </view>
+      </view>
       <view wx:if="{{baseline}}" class='baseline'>-----我是有底线的-----</view>
     </scroll-view>
   </view>
