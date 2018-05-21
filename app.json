@@ -1,14 +1,8 @@
 {
   "pages": [
-<<<<<<< HEAD
     "pages/details/collection/library/fileLib/fileLib",
     "pages/mine/mine","pages/details/collection/library/photoLib/photoLib",
     
-=======
-    "pages/mine/mine",
-    "pages/details/collection/library/photoLib/photoLib",
-    "pages/details/collection/library/fileLib/fileLib",  
->>>>>>> bb410a0521667ee65107e20d3822ea30838adfe3
     "pages/details/blogList/blogList",
     "pages/details/followList/followList",
     "pages/details/fansList/fansList",
