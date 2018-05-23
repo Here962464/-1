@@ -13,15 +13,15 @@
       </view>
     </view>
     <view class='tools'>
-      <view class='search' catchtap='search'>
+      <view class='search' catchtap='_search'>
         <image src='../../../../icon/search.png'></image>
         分类查询
       </view>
-      <view class='upload' catchtap='upload'>
+      <view class='upload' catchtap='_upload'>
         <image src='../../../../icon/uploadFile.png'></image>
         上传文件
       </view>
-      <view class='creat' catchtap='creat'>
+      <view class='creat' catchtap='_creat'>
         <image src='../../../../icon/newFolder.png'></image>
         新建文件夹
       </view>
@@ -31,7 +31,11 @@
     <scroll-view style='height:{{scrollY}}px;' bindscrolltolower="startLoading" scroll-y="true" scroll-with-animation="true" lower-threshold>
       <view class='fileBlocks' wx:for="{{folderList}}">
         <view class='folder'>
-          <image class='folderImg' src='{{item.imgUrl}}'></image>{{item.fileName}}
+          <image class='folderImg' src='{{item.imgUrl}}'></image>
+          <view class='folderInfo'>
+            <view class='fileName'>{{item.fileName}}</view>
+            <view class='createDate'>{{item.createDate}} {{item.computedFileSize}}</view>
+          </view>
         </view>
       </view>
       <view wx:if="{{baseline}}" class='baseline'>-----我是有底线的-----</view>

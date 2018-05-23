@@ -1,6 +1,6 @@
 <view class="container" wx:if="{{!show}}">   
   <view class='logIn'>
-    <button bindtap='wxLogIn' class='wxlog'>微信授权登录</button>
+    <button lang="zh_CN" bindgetuserinfo="getUserInfo"  open-type="getUserInfo" class='wxlog'>微信授权登录</button>
     <text class='loginByMail' bindtap="loginByMail">已有账号？立即登录</text>
   </view>
 </view>
@@ -19,7 +19,7 @@
   <import src="../templates/mine-template/floor02/floor02.wxml" />
   <template is="floor02" />
   <navigator url="../details/collection/collection" hover-class="none" class='floor03'>
-    <image src="../icon/collection.png" class='collection fl'></image><text class='fl'>收藏000</text><image src="../icon/go.png" class='go'></image>
+    <image src="../icon/collection.png" class='collection fl'></image><text class='fl'>收藏</text><image src="../icon/go.png" class='go'></image>
   </navigator>
   <navigator url="../details/setting/setting" class='floor04' hover-class='none'>
     <image src="../icon/setting.png" class='setting fl'></image><text class='fl'>设置</text><image src="../icon/go.png" class='go'></image>

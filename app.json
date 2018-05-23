@@ -1,16 +1,14 @@
 {
   "pages": [
     "pages/details/collection/library/fileLib/fileLib",
-    "pages/mine/mine","pages/details/collection/library/photoLib/photoLib",
-    
+    "pages/mine/mine",
+   "pages/details/collection/library/photoLib/photoLib",
     "pages/details/blogList/blogList",
     "pages/details/followList/followList",
     "pages/details/fansList/fansList",
     "pages/details/writeBlog/writeBlog",
-    "pages/details/blogList/secondary/secondary",  "pages/details/collection/library/photoLib/photoes/photoes",              
-    "pages/ details/collection/library/photoLib/photoes/photoDetails/photoDetails",
-    "pages/index/index","pages/details/collection/library/photoLib/resetAlbum/resetAlbum",      
-    "pages/details/collection/library/photoLib/photoes/addPhotoes/addPhotoes","pages/details/collection/library/photoLib/addAlbum/addAlbum",
+    "pages/details/blogList/secondary/secondary",  "pages/details/collection/library/photoLib/photoes/photoes",     "pages/ details/collection/library/photoLib/photoes/photoDetails/photoDetails",
+    "pages/index/index","pages/details/collection/library/photoLib/resetAlbum/resetAlbum",   "pages/details/collection/library/photoLib/photoes/addPhotoes/addPhotoes","pages/details/collection/library/photoLib/addAlbum/addAlbum",
     "pages/messages/messages",
     "pages/search/search",
     "pages/logs/logs",
@@ -31,19 +29,19 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页",
+        "text": "博客",
         "iconPath": "pages/icon/home.png",
         "selectedIconPath": "pages/icon/home-active.png"
       },
       {
         "pagePath": "pages/messages/messages",
-        "text": "消息",
+        "text": "相册",
         "iconPath": "pages/icon/message.png",
         "selectedIconPath": "pages/icon/message-active.png"
       },
       {
         "pagePath": "pages/search/search",
-        "text": "发现",
+        "text": "文件",
         "iconPath": "pages/icon/find.png",
         "selectedIconPath": "pages/icon/find-active.png"
       },

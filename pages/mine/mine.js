@@ -9,9 +9,9 @@ Page({
     userInfo: {
       nickName:'',
       avatarUrl:'',
-      gender:0
+      gender:"亦男亦女"
     },
-    show:true,
+    show:false,
     showListUrl:[
       '../details/blogList/blogList',
       '../details/followList/followList',
@@ -27,39 +27,6 @@ Page({
       url: tempUrl,
     })
   },
-  wxLogIn:function(){
-    var _this = this;
-    //登录
-    wx.login({
-      success: function(){
-        // 从本地缓存获取数据
-        wx.getUserInfo({
-          success: function (res) {
-            // 转换性别
-            var gender = res.userInfo.gender;
-            if (!gender) {
-              gender = "未知";
-            } else if (gender == 1) {
-              gender = "男";
-            } else {
-              gender = '女';
-            }
-            var userNickname = res.userInfo.nickName;
-            var iconPath = res.userInfo.avatarUrl;
-            console.log(res)
-            _this.setData({
-              show: true,
-              userInfo: {
-                userNickname: userNickname,
-                avatarUrl: iconPath,
-                gender: gender
-              }
-            });
-          }
-        })
-      }
-    })
-  },
   loginByMail: function(){
     var _this = this;
     wx.navigateTo({
@@ -71,17 +38,55 @@ Page({
    */
   onLoad: function (options) {
     var _this = this;
-    _this.wxLogIn()
-    // wx.getUserInfo({
-    //   success: function(res){
-    //     console.log(res)
-    //     if (res.errMsg == "getUserInfo:ok"){
-          
-    //     }
-    //   }
-    // })
+    // 查看是否授权
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权
+          // 率先加载用户界面
+          _this.setData({
+            show:true
+          })
+          //调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function(res){
+              console.log(res)
+              _this.loadUserInfo(res)
+            }
+          })
+        }else{
+         console.log("用户未授权");
+        }
+      }
+    })
   },
+  // 唤起请求获取用户信息弹窗
   getUserInfo: function (e) {
-    
+    console.log(e.detail.userInfo)
+    var _this = this;
+    this.loadUserInfo(e.detail);
+  },
+  loadUserInfo: function(data){
+    var _this = this;
+    // 转换性别
+    var gender = data.userInfo.gender;
+    if (!gender) {
+      gender = "未知";
+    } else if (gender == 1) {
+      gender = "男";
+    } else {
+      gender = '女';
+    }
+    var userNickname = data.userInfo.nickName;
+    var iconPath = data.userInfo.avatarUrl;
+    console.log(data)
+    _this.setData({
+      show: true,
+      userInfo: {
+        userNickname: userNickname,
+        avatarUrl: iconPath,
+        gender: gender
+      }
+    });
   }
 })

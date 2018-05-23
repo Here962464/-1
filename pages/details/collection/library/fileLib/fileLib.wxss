@@ -1,6 +1,13 @@
 /*引入fontAwesome  */
 /* @import "../../../../common/fontAwesome"; */
 /*头像信息栏  */
+.topMenu{
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+}
 .userInfo{
   width: 100%;
   height: 180rpx;
@@ -64,6 +71,9 @@
   margin-right: 10rpx;
 }
 /*content  */
+.content{
+  margin-top: 264rpx;
+}
 .fileBlocks{
   width: 100%;
   padding: 10rpx 0;
@@ -78,7 +88,22 @@
   font-size: 32rpx;
 }
 .folderImg{
-  width: 56rpx;
-  height: 56rpx;
+  width: 100rpx;
+  height: 100rpx;
   margin-right: 20rpx;
+}
+.fileName{
+  width:550rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.createDate{
+  padding: 10rpx 0;
+  font-size: 24rpx;
+  color: #aaa;
+}
+.baseline{
+  text-align: center;
+  padding: 20rpx 0;
 }

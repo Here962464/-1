@@ -7,7 +7,7 @@ Page({
    */
   data: {
     scrollY: "",
-    pageSize: 15,
+    pageSize: 20,
     total: 0,
     baseline: false,
     fileList:[],
@@ -20,9 +20,19 @@ Page({
    */
   onLoad: function (options) {
     var _this = this;
+    // 获取设备高度
+    wx.getSystemInfo({
+      success: function(res) {
+        console.log(res);
+        _this.setData({
+          scrollY: res.windowHeight
+        })
+      },
+    })
     var tempSize = this.data.pageSize;
     this.readyToLoad(tempSize);
     var tempUserInfo = {};
+    //获取用户信息
     wx.getUserInfo({
       success: function(res){
         console.log(res);
@@ -41,23 +51,10 @@ Page({
     //当前页号
     map['pageNum'] = 1;
     //每页显示的数据条数
-    map['pageSize'] = 30;
+    map['pageSize'] = pageSize;
     //父级目录id  如果是没有父级目录，而是刚进入文件模块的列表，就空着。
     //如果是进入某个文件夹，则填写该文件夹的id
-    // map['parentId'] = "abcdefg";
-    //是否是文件夹    1:新建文件夹  2：上传的文件
-    //一般是文件和文件都查询，则空着，如果只查询文件或者只查询文件夹，就设置1或2
-    // map['folder'] = 1;
-    //文件类型  如果全查，则空着
-    // map['fileTypet'] = "zip";
-    //文件分类   (之前商量的方案 不要分类)不写分类则全查
-    //map['fileSort']="我的小程序";	
-    //文件夹/文件权限（公开/隐藏） 不写则全查
-    // map['privacySet'] = 1;
-    //是否被删除 0 未删除  1删除  1用于回收站查询  不写默认全查
-    // map['del'] = 0;
-    //是否需要输入密码访问   1需要 0不需要  不写则全查
-    // map['needPassword'] = 0;
+    map['parentId'] = "root";
     //列排序  按照时间降序 DESC  升序 ASC  不加默认按时间降序
     map['arrange'] = "DESC";
     var mapString = JSON.stringify(map).slice(1);
@@ -65,41 +62,109 @@ Page({
     wx.request({
       url: resourceUrl + 'wx_resource/ResourceList?value=' + value,
       success: function (res) {
-        console.log(res.data.value.list);
+        wx.hideToast();
+        console.log(res.data);
+        _this.data.total = res.data.value.total;
         var tempFolderList = [];
         var temFileFolder = [];
         var tempResArray = res.data.value.list;
         for (var i = 0; i < tempResArray.length; i++){
           if (tempResArray[i].folder == 1){
+            // 如果是文件夹
             tempResArray[i]["imgUrl"] = "../../../../icon/folder.png";
+            tempResArray[i]["computedFileSize"] = "";
             tempFolderList.push(tempResArray[i]);
           } else{
+            // 如果是其他文件
             var filter = tempResArray[i].fileName;
             // 正则匹配
             var pattTxt = /^.*txt$/;
             var pattDocx = /^.*docx$/;
             var pattHtml = /^.*html$/;
             var pattPdf = /^.*pdf$/;
-            var pattJs = /^.*js$/;
-            var pattZip = /^.*zip$/;
+            var pattJs = /^(.*js|.*css|.*php)$/;
+            var pattZip = /^(.*zip|.*rar)$/;
+            var pattImg = /^(.*jpg|.*png|.*gif|.*jpeg|.*bmp|.*ico|.*icl|.*psd|.*tif)$/;
             // console.log(filter.match(patt1));
             if (filter.match(pattTxt)){
               tempResArray[i]["imgUrl"] = "../../../../icon/txt.png";
+              var tempSize = tempResArray[i].fileSize;
+              // 判断文件大小
+              if(tempSize == null){
+                tempResArray[i]["computedFileSize"] ="0kb";
+              }else{
+                tempResArray[i]["computedFileSize"] = tempSize + "kb";
+              }
               tempFolderList.push(tempResArray[i]);
             } else if (filter.match(pattDocx)){
               tempResArray[i]["imgUrl"] = "../../../../icon/wordFile.png";
+              var tempSize = tempResArray[i].fileSize;
+              // 判断文件大小
+              if (tempSize == null) {
+                tempResArray[i]["computedFileSize"] = "0kb";
+              } else {
+                tempResArray[i]["computedFileSize"] = tempSize + "kb";
+              }
               tempFolderList.push(tempResArray[i]);
             } else if (filter.match(pattHtml)) {
               tempResArray[i]["imgUrl"] = "../../../../icon/html.png";
+              var tempSize = tempResArray[i].fileSize;
+              // 判断文件大小
+              if (tempSize == null) {
+                tempResArray[i]["computedFileSize"] = "0kb";
+              } else {
+                tempResArray[i]["computedFileSize"] = tempSize + "kb";
+              }
               tempFolderList.push(tempResArray[i]);
             } else if (filter.match(pattPdf)) {
               tempResArray[i]["imgUrl"] = "../../../../icon/PDF.png";
+              var tempSize = tempResArray[i].fileSize;
+              // 判断文件大小
+              if (tempSize == null) {
+                tempResArray[i]["computedFileSize"] = "0kb";
+              } else {
+                tempResArray[i]["computedFileSize"] = tempSize + "kb";
+              }
               tempFolderList.push(tempResArray[i]);
             } else if (filter.match(pattJs)) {
-              tempResArray[i]["imgUrl"] = "../../../../icon/js.png";
+              tempResArray[i]["imgUrl"] = "../../../../icon/codeFile.png";
+              var tempSize = tempResArray[i].fileSize;
+              // 判断文件大小
+              if (tempSize == null) {
+                tempResArray[i]["computedFileSize"] = "0Kb";
+              } else {
+                tempResArray[i]["computedFileSize"] = tempSize + "Kb";
+              }
               tempFolderList.push(tempResArray[i]);
             } else if (filter.match(pattZip)) {
               tempResArray[i]["imgUrl"] = "../../../../icon/zip.png";
+              var tempSize = tempResArray[i].fileSize;
+              // 判断文件大小
+              if (tempSize == null) {
+                tempResArray[i]["computedFileSize"] = "0kb";
+              } else {
+                tempResArray[i]["computedFileSize"] = tempSize + "kb";
+              }
+              tempFolderList.push(tempResArray[i]);
+            } else if (filter.match(pattImg)){
+              tempResArray[i]["imgUrl"] = "../../../../icon/imgFile.png";
+              var tempSize = tempResArray[i].fileSize;
+              // 判断文件大小
+              if (tempSize == null) {
+                tempResArray[i]["computedFileSize"] = "0kb";
+              } else {
+                tempResArray[i]["computedFileSize"] = tempSize + "kb";
+              }
+              tempFolderList.push(tempResArray[i]);
+            }else{
+              tempResArray[i]["imgUrl"] = "../../../../icon/document.png";
+              var tempSize = tempResArray[i].fileSize;
+              // 判断文件大小
+              if (tempSize == null) {
+                tempResArray[i]["computedFileSize"] = "0kb";
+              } else {
+                tempResArray[i]["computedFileSize"] = tempSize + "kb";
+              }
               tempFolderList.push(tempResArray[i]);
             }
           }
@@ -111,13 +176,38 @@ Page({
       }
     })
   },
+  _upload: function(){
+    // wx.getSavedFileList({
+    //   success: function(res){
+    //     console.log(res);
+    //   }
+    // })
+    wx.chooseImage({
+      success: function(res) {
+        console.log(res);
+      },
+    })
+    // wx.uploadFile({
+    //   url: resourceUrl + "saveResource",
+    //   filePath: '',
+    //   name: '',
+    //   success: function (res){
+    //     console.log(res)
+    //   }
+    // })
+  },
   // 判断边界值开始加载下一页
   startLoading: function (e) {
     console.log(e)
     var _this = this;
-    var num = this.data.pageSize += 15;
-    var upperLimit = this.data.total + 15;
+    var num = this.data.pageSize += 20;
+    var upperLimit = this.data.total + 20;
     if (num < upperLimit) {
+      wx.showToast({
+        title: '加载中',
+        icon:"loading",
+        duration:10000
+      })
       this.readyToLoad(_this.data.pageSize);
     } else {
       _this.setData({
