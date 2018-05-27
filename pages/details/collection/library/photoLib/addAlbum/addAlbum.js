@@ -7,8 +7,8 @@ var fileUrl = app.globalData.globalFileUrl;
 Page({
   data: {
     toAddTips: false,
-    pubState: 1,
-    psdState: 0,
+    pubState: "1",
+    psdState: "0",
     psdBackground: "rgb(245,247,250)",
     psdFocus: false,
     coverUrl:"",
@@ -64,11 +64,11 @@ Page({
     var privacySet = e.detail.value;
     if (privacySet){
       this.setData({
-          privacySet: 1
+          privacySet: "1"
       })
     }else{
       this.setData({
-          privacySet: 0
+          privacySet: "0"
       })
     }
   },
@@ -97,14 +97,14 @@ Page({
         psdState: false,
         psdBackground: "#fff",
         psdFocus: true,
-          setPassword: 1
+          setPassword: "1"
       })
     }else{
       this.setData({
         psdState: true,
         psdBackground: "rgb(245,247,250)",
         psdFocus: false,
-          setPassword: 0
+          setPassword: "0"
       })
     }
   },
@@ -213,7 +213,7 @@ Page({
     //相册密码
     map['albumPassword'] = this.data.albumPassword;
     //相册封面图标标识   如果用户没有自定义封面 设置为"default"
-    map['albumIcon'] = "default";
+    map['albumIcon'] = this.data.albumIcon;
     //相册封面图标路径 url             
     map['iconPath'] = this.data.iconPath;
     map['showStyle'] = "特效一";
@@ -238,8 +238,9 @@ Page({
         descripMention: "相册描述不能为空!"
       })
     }else if( a && b ){
+      console.log(value);
       wx.request({
-        url: albumUrl +'wx_album/createAlbum?value='+value,
+        url: albumUrl +'wx_album/createAlbum?value='+ value,
         method:"POST",
         success: function (res) {
           if (res.data.message==1){
@@ -274,8 +275,7 @@ Page({
     }
   },
   backToPhotoLib: function(){
-    wx.redirectTo({
-      url: '../photoLib',
-    })
+    console.log(111);
+    wx.navigateBack();
   }
 })

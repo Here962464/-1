@@ -1,6 +1,10 @@
 //app.js
 App({
   onLaunch: function () {
+    wx.setTabBarStyle({
+      color: '#aaa',
+      selectedColor:'#409eff'
+    })
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -42,7 +46,7 @@ App({
     photoId:"",
     curIndex:0,
     photoTotal:0,
-    userInfo: null,     globalAlbumUrl:"https://www.sharismspace.com/album_server-0.0.1-SNAPSHOT/",
+    userInfo: null, globalAlbumUrl:"https://www.sharismspace.com/album_server-0.0.1-SNAPSHOT/",
       globalUserUrl:"https://www.sharismspace.com/user_server-0.0.1-SNAPSHOT/",
       globalFileUrl:"https://www.sharismspace.com/file_server-0.0.1-SNAPSHOT/",
     globalBlogUrl:"https://www.sharismspace.com/blog_server-0.0.1-SNAPSHOT/",

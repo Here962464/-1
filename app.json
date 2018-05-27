@@ -1,14 +1,17 @@
 {
   "pages": [
-    "pages/details/collection/library/fileLib/fileLib",
-    "pages/mine/mine",
-   "pages/details/collection/library/photoLib/photoLib",
     "pages/details/blogList/blogList",
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/details/collection/library/fileLib/fileLib",
+"pages/details/collection/library/fileLib/sonFolder/sonFolder",
+   "pages/details/collection/library/photoLib/photoLib",
+   
     "pages/details/followList/followList",
     "pages/details/fansList/fansList",
     "pages/details/writeBlog/writeBlog",
-    "pages/details/blogList/secondary/secondary",  "pages/details/collection/library/photoLib/photoes/photoes",     "pages/ details/collection/library/photoLib/photoes/photoDetails/photoDetails",
-    "pages/index/index","pages/details/collection/library/photoLib/resetAlbum/resetAlbum",   "pages/details/collection/library/photoLib/photoes/addPhotoes/addPhotoes","pages/details/collection/library/photoLib/addAlbum/addAlbum",
+    "pages/details/blogList/secondary/secondary",  "pages/details/collection/library/photoLib/photoes/photoes",    
+    "pages/ details/collection/library/photoLib/photoes/photoDetails/photoDetails","pages/details/collection/library/photoLib/resetAlbum/resetAlbum",   "pages/details/collection/library/photoLib/photoes/addPhotoes/addPhotoes","pages/details/collection/library/photoLib/addAlbum/addAlbum",
     "pages/messages/messages",
     "pages/search/search",
     "pages/logs/logs",
@@ -28,22 +31,22 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/details/blogList/blogList",
         "text": "博客",
-        "iconPath": "pages/icon/home.png",
-        "selectedIconPath": "pages/icon/home-active.png"
+        "iconPath": "pages/icon/blog.png",
+        "selectedIconPath": "pages/icon/blog-active.png"
       },
       {
-        "pagePath": "pages/messages/messages",
+        "pagePath": "pages/details/collection/library/photoLib/photoLib",
         "text": "相册",
-        "iconPath": "pages/icon/message.png",
-        "selectedIconPath": "pages/icon/message-active.png"
+        "iconPath": "pages/icon/album.png",
+        "selectedIconPath": "pages/icon/album-active.png"
       },
       {
-        "pagePath": "pages/search/search",
+        "pagePath": "pages/details/collection/library/fileLib/fileLib",
         "text": "文件",
-        "iconPath": "pages/icon/find.png",
-        "selectedIconPath": "pages/icon/find-active.png"
+        "iconPath": "pages/icon/file.png",
+        "selectedIconPath": "pages/icon/file-active.png"
       },
       {
         "pagePath": "pages/mine/mine",

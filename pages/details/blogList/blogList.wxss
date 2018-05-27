@@ -1,9 +1,18 @@
 .menu{
+  width: 100%;
   padding: 20rpx 0;
   height: 60rpx;
   flex-direction: row;
   justify-content: center;
   display: flex;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+}
+.articleList{
+  margin-top: 100rpx;
 }
 .groups{
   text-align: center;
@@ -31,7 +40,10 @@
 }
 .blogBlock{
   width: 100%;
-  padding: 20rpx;
+  overflow: hidden;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  padding-left: 30rpx;
   border-bottom: 2rpx solid #ccc;
 }
 .title{
@@ -69,8 +81,11 @@
   padding: 40rpx 0;
 }
 /*文集模块  */
+.classify{
+  margin-top: 100rpx;
+}
 .classifyBlock{
-   background: #F1F1F1; 
+  background: #F1F1F1; 
 }
 .creat{
   border: 2rpx solid #eee;

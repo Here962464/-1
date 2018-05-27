@@ -1,0 +1,22 @@
+<view class='content'>
+    <scroll-view style='height:{{scrollY}}px;' bindscrolltolower="startLoading" scroll-y="true" scroll-with-animation="true" lower-threshold>
+      <view class='fileBlocks' wx:for="{{folderList}}">
+      <!--弹出层  -->
+        <modal hidden="{{newFolderState}}" title="新建文件夹" confirm-text="确认" cancel-text="取消" bindcancel="cancleNewFolder" bindconfirm="confirmNewFolder"> 
+          <input class='inputFileName' value="{{fileName}}" bindblur='getFileName' type='text' placeholder="{{mentionFileName}}" auto-focus/>
+           <!-- 是否公开 -->
+          <checkbox-group bindchange="isChecked">
+            <checkbox value="1" class='checkBox'>设置为共享文件夹</checkbox>
+          </checkbox-group>
+        </modal>
+        <view id="{{item.id}}" catchtap='{{item.catchTapFn}}' class='folder'>
+          <image class='folderImg' src='{{item.imgUrl}}'></image>
+          <view class='folderInfo'>
+            <view class='fileName'>{{item.fileName}}</view>
+            <view class='createDate'>{{item.createDate}} {{item.computedFileSize}}</view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{baseline}}" class='baseline'>-----我是有底线的-----</view>
+    </scroll-view>
+  </view>
