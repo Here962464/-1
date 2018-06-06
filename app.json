@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/details/collection/library/fileLib/fileLib",
     "pages/details/blogList/blogList",
     "pages/index/index",
     "pages/mine/mine",
-    "pages/details/collection/library/fileLib/fileLib",
+    
 "pages/details/collection/library/fileLib/sonFolder/sonFolder",
    "pages/details/collection/library/photoLib/photoLib",
    

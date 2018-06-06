@@ -81,7 +81,7 @@ Page({
         })
         // 延时页面重定向
         setTimeout(function(){
-          wx.redirectTo({
+          wx.reLaunch({
             url: '../photoLib'
           })
         },2000)
@@ -131,8 +131,9 @@ Page({
                 console.log(res);
                 // 延迟刷新相册
                 setTimeout(function () {
-                  wx.redirectTo({
-                    url: '../photoLib',
+                  // 跳回到tabar页并刷新
+                  wx.reLaunch({
+                    url: '../photoLib'
                   })
                 }, 2000)
               } else {

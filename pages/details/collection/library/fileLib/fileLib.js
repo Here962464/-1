@@ -17,6 +17,8 @@ Page({
     folderList:[],
     userInfo: {},
     showFolder: false,
+    iconSelect:"iconHide",
+    selectedArray:[],
     // 新建文件夹
     parentId:"root",
     fileName:"",
@@ -29,7 +31,16 @@ Page({
     showBackArrow: false,
     idList: [],
     nameList: [],
-    beforeIndex: 0
+    beforeIndex: 0,
+    // 底部菜单栏
+    tabBar:"ulBox",
+    topBar:"topBar",
+    chooseAmount:1,
+    chooseAll:"全选",
+    renameImgUrl:"../../../../icon/renameFolder.png",
+    deleteImgUrl:"../../../../icon/deleteFolder.png",
+    moveImgUrl:"../../../../icon/move.png",
+    deleteFolder:"_deleteFolder"
   },
 
   /**
@@ -78,6 +89,8 @@ Page({
     //父级目录id  如果是没有父级目录，而是刚进入文件模块的列表，就空着。
     //如果是进入某个文件夹，则填写该文件夹的id
     map['parentId'] = parentId;
+    //是否被删除 0 未删除  1删除  1用于回收站查询  不写默认全查
+    map['del'] = 0;
     //列排序  按照时间降序 DESC  升序 ASC  不加默认按时间降序
     map['arrange'] = "DESC";
     var mapString = JSON.stringify(map).slice(1);
@@ -91,6 +104,10 @@ Page({
         var tempFolderList = [];
         var tempResArray = res.data.value.list;
         for (var i = 0; i < tempResArray.length; i++){
+          // 加载icon的颜色
+          tempResArray[i]["iconColor"] = "#ccc";
+          // icon状态变量
+          tempResArray[i]["selecteState"] = false;
           if (tempResArray[i].folder == 1){
             // 如果是文件夹
             // 图标
@@ -434,19 +451,257 @@ Page({
     })
   },
   _upload: function(){
-    wx.getSavedFileList({
+    wx.chooseImage({
       success: function(res){
         console.log(res)
       }
     })
   },
-  // 重命名文件
-  renameFolder: function(e){
+  // 编辑文件
+  editFolder: function(e){
+    // 清空
+    this.data.selectedArray = [];
     console.log(e);
+    // 动画隐藏tab
+    wx.hideTabBar({
+      animation:true
+    });
+    //阻止tap事件
+    for (var i = 0; i < this.data.folderList.length;i++){
+      this.data.folderList[i].catchTapFn = "";
+    }
+    this.setData({
+      tabBar:"ulBoxShow",
+      iconSelect:"iconShow",
+      topBar:"topBarShow"
+    })
+    // 因为加载列表图片时设置的文件夹和非文件夹的id不一样，所以这里需要切换一下
+    var curIndex = e.currentTarget.dataset.index;
+    var tempId = this.data.folderList[curIndex].id;
+    this.isSelected(e, tempId);
+    // this.renameRequest();
+  },
+  // 取消编辑
+  _cancleEdit: function(){
+    // 清空
+    this.data.selectedArray = [];
+    this.readyToLoad(this.data.pageSize, this.data.folderId);
+    // 显示taBar
+    wx.showTabBar({
+      animation: true
+    });
+    this.setData({
+      tabBar: "ulBox",
+      iconSelect: "iconHide",
+      topBar: "topBar"
+    })
+  },
+  // 点击icon
+  _selectedIcon: function (e) {
+    // ID
+    var tempId = e.currentTarget.id;
+    console.log(tempId);
+    this.isSelected(e, tempId);
+  },
+  // 全选
+  _chooseAll: function () {
+    // 清空
+    this.data.selectedArray = [];
+    var tempList = this.data.folderList
+    if (this.data.chooseAll == "全选"){
+      this.setData({
+        deleteImgUrl: "../../../../icon/deleteFolder.png",
+        moveImgUrl: "../../../../icon/move.png",
+        renameImgUrl: "../../../../icon/rename.png"
+      })
+      this.setData({
+        chooseAll: "全不选"
+      })
+      for (var i = 0; i < tempList.length; i++) {
+        tempList[i]["iconColor"] = "#409eff";
+        tempList[i]["selecteState"] = true;
+        this.data.selectedArray.push(this.data.folderList[i]["id"]);
+      }
+    }else{
+      this.setData({
+        renameImgUrl: "../../../../icon/rename.png",
+        deleteImgUrl: "../../../../icon/deleteBlogClass.png",
+        moveImgUrl: "../../../../icon/move-hide.png"
+      })
+      this.setData({
+        chooseAll: "全选"
+      })
+      for (var i = 0; i < tempList.length; i++) {
+        tempList[i]["iconColor"] = "#ccc";
+        tempList[i]["selecteState"] = false;
+      }
+      this.data.selectedArray = [];
+    }
+    this.setData({
+      folderList: tempList,
+      chooseAmount: this.data.selectedArray.length
+    });
+    this._taBarState();
+    console.log(this.data.selectedArray);
+  },
+  isSelected: function (event, tempId) {
+    // 状态变量
+    var _this = this;
+    console.log(event);
+    // 下标
+    var tempIndex = event.currentTarget.dataset.index;
+    // ID state
+    var tempState = event.currentTarget.dataset.state;
+    // 删除下标
+    var deleteIndex = 0;
+    // 获取文件列表
+    var tempList = this.data.folderList;
+    if (!tempState) {
+      // 更改列表中的属性
+      // 改变icon颜色
+      tempList[tempIndex]["iconColor"] = "#409eff";
+      // 改变状态变量
+      tempList[tempIndex]["selecteState"] = true;
+      // 存放id
+      this.data.selectedArray.push(tempId);
+    } else {
+      // 改变icon颜色
+      tempList[tempIndex]["iconColor"] = "#ccc";
+      // 改变状态变量
+      tempList[tempIndex]["selecteState"] = false;
+      // 删除id
+      // 封装方法
+      Array.prototype.indexOf = function (val) {
+        for (var i = 0; i < this.length; i++) {
+          if (this[i] == val) return i;
+        }
+        return -1;
+      };
+      Array.prototype.remove = function (val) {
+        var index = this.indexOf(val);
+        if (index > -1) {
+          this.splice(index, 1);
+        }
+      };
+      this.data.selectedArray.remove(tempId);
+    }
+    console.log(this.data.selectedArray);
+    this.setData({
+      folderList: tempList, 
+      chooseAmount: this.data.selectedArray.length
+    });
+    this._taBarState();
+  },
+  // 判断tabar的状态
+  _taBarState: function(){
+    if (this.data.selectedArray.length == 0) {
+      this.setData({
+        renameImgUrl: "../../../../icon/rename.png",
+        deleteImgUrl: "../../../../icon/deleteBlogClass.png",
+        moveImgUrl: "../../../../icon/move-hide.png"
+      })
+    } else if (this.data.selectedArray.length > 1) {
+      this.setData({
+        renameImgUrl: "../../../../icon/rename.png"
+      })
+    } else {
+      this.setData({
+        renameImgUrl: "../../../../icon/renameFolder.png",
+        deleteImgUrl: "../../../../icon/deleteFolder.png",
+        moveImgUrl: "../../../../icon/move.png"
+      })
+    }
   },
   // 发请求重命名文件或文件夹
   renameRequest: function(e){
-    console.log(e);
+    var map = {};
+    //文件id 必填
+    map['id'] = "906b0683fbdb48189459e0ed0c6257fb";
+    //目录id   如果修改,则是将文件移动到该文件夹里
+    map['parentId'] = "abcdefg";
+    //修改文件夹名称或文件名称
+    map['fileName'] = "新建文件夹/文件名";
+    //文件类型  如果是文件夹，则空着
+    map['fileType'] = "";
+    var mapString = JSON.stringify(map).slice(1);
+    var value = mapString.substr(0, mapString.length - 1);
+    wx.request({
+      url: resourceUrl + 'wx_resource/updateResourceInfo?value=' + value,
+      success: function (res) {
+        console.log(res);
+      }
+    })
+  },
+  // 删除文件
+  _deleteFolder: function () {
+    var _this = this;
+    var tempArray = this.data.selectedArray;
+    if(tempArray.length!=0){
+      _this.setData({
+        deleteFolder: "_deleteFolder"
+      })
+      wx.showModal({
+        title: '删除文件',
+        content: '确认删除选中的所有文件及文件夹',
+        success: function (res) {
+          console.log(res);
+          var tempId = tempArray.join(",");
+          console.log(tempId);
+          if (res.confirm) {
+            wx.request({
+              url: resourceUrl + "wx_resource/deleteResource?value=" + tempId,
+              success: function (res) {
+                console.log(res);
+                if (res.data.code == 1) {
+                  wx.showToast({
+                    title: '删除成功！',
+                    icon: "success"
+                  })
+                  setTimeout(function () {
+                    _this.readyToLoad(_this.data.pageSize, _this.data.folderId);
+                    // 显示taBar
+                    wx.showTabBar({
+                      animation: true
+                    });
+                    _this.setData({
+                      tabBar: "ulBox",
+                      iconSelect: "iconHide",
+                      topBar: "topBar"
+                    })
+                  }, 1500);
+                } else {
+                  wx.showToast({
+                    title: '出错了',
+                    icon: "loading"
+                  })
+                  setTimeout(function () {
+                    _this.readyToLoad(_this.data.pageSize, _this.data.folderId);
+                    // 显示taBar
+                    wx.showTabBar({
+                      animation: true
+                    });
+                    _this.setData({
+                      tabBar: "ulBox",
+                      iconSelect: "iconHide",
+                      topBar: "topBar"
+                    })
+                  }, 1500);
+                }
+              }
+            })
+          }
+        },
+        fail: function (res) {
+
+        }
+      })
+    }else{
+      _this.setData({
+        deleteFolder: ""
+      })
+    }
+    
+    
   },
   // 判断边界值开始加载下一页
   startLoading: function (e) {
