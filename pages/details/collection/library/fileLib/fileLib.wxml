@@ -31,12 +31,23 @@
       </view>
     </view>
   </view>
-  <!--底部工具栏  -->
+  <!--顶部工具栏  -->
   <view class='{{topBar}}'>
     <button catchtap='_cancleEdit' size='mini' plain="true" class='cancleEdit'>取消</button>
     <view>已选定{{chooseAmount}}个</view>
     <button catchtap='_chooseAll' size='mini' plain="true" class='chooseAll'>{{chooseAll}}</button>
   </view>
+  <!--移动到  -->
+  <view class='{{moveTo}}'>
+    <button catchtap='_cancleMove' size='mini' plain="true" class='cancleEdit'>取消</button>
+    <view>移动到</view>
+    <button catchtap='_comfirmMove' size='mini' plain="true" class='cancleEdit'>确定</button>
+  </view>
+  <!--重命名弹出层  -->
+  <modal hidden="{{renameFolderState}}" title="重命名" confirm-text="确认" cancel-text="取消" bindcancel="cancleRenameFolder" bindconfirm="confirmRenameFolder"> 
+    <input class='inputFileName'  value="{{oldFileName}}" bindblur='getNewName' type='text' placeholder="{{mention}}" auto-focus/>
+  </modal>
+  <!--底部工具栏  -->
   <view class='{{tabBar}}'>
     <view class='ul'>
       <view catchtap='_renameFolder' class='li'>

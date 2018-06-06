@@ -25,6 +25,7 @@ Page({
     privacySet: 0,
     mentionFileName:"请输入文件夹名称",
     // 隐藏弹出层
+    renameFolderState:true,
     newFolderState: true,
     // 进入子文件夹
     folderName:"",
@@ -40,7 +41,15 @@ Page({
     renameImgUrl:"../../../../icon/renameFolder.png",
     deleteImgUrl:"../../../../icon/deleteFolder.png",
     moveImgUrl:"../../../../icon/move.png",
-    deleteFolder:"_deleteFolder"
+    deleteFolder:"_deleteFolder",
+    // 重命名
+    mention:"请输入文件夹名称",
+    oldFileName:"",
+    newFolderName:"",
+    oldFileId:"",
+    oldFileType:"",
+    // 移动到
+    moveTo:"moveToHide"
   },
 
   /**
@@ -612,23 +621,118 @@ Page({
       })
     }
   },
+  // 重命名
+  _renameFolder: function(){
+    if(this.data.selectedArray.length == 1){
+      var tempId = this.data.selectedArray[0];
+      // 根据id获取文件名称
+      for(var i=0;i<this.data.folderList.length;i++){
+        if (tempId == this.data.folderList[i].id){
+          console.log(this.data.folderList[i].fileName);
+          this.setData({
+            oldFileName: this.data.folderList[i].fileName,
+            oldFileId: tempId,
+            oldFileType: this.data.folderList[i].fileType
+          })
+        }
+      }
+      // 显示弹窗
+      this.setData({
+        renameFolderState: false
+      })
+    }
+  },
+  // 确认重命名
+  confirmRenameFolder: function(e){
+    var _this = this;
+    console.log(e);
+    // 如果未改动则不发请求
+    if (this.data.newFolderName == this.data.oldFileName){
+      this.setData({
+        renameFolderState: false
+      })
+    } else if (this.data.newFolderName == ""){
+      // 若改动了但是为空则不发请求
+      this.setData({
+        renameFolderState: false,
+        mention:"名称不能为空！"
+      })
+    }else{
+      // 不为空且不重复则发请求
+      console.log(this.data.oldFileId);
+      console.log(this.data.newFolderName);
+      // console.log(this.data.oldFileType);
+      // var fileType = JSON.parse(_this.data.oldFileType);
+      var fileState = "";
+      // if (fileType.isFolder == 0){
+      //   fileState = "zip";
+        // 其实可以正则匹配，但是我不知道这个数据传到后台有什么用
+      // }
+      this.renameRequest(this.data.oldFileId, this.data.newFolderName, fileState);
+    }
+  },
+  // 取消重命名
+  cancleRenameFolder: function(e){
+    console.log(e);
+    this.setData({
+      renameFolderState: true
+    })
+  },
+  // 获取value值
+  getNewName: function(e){
+    console.log(e.detail.value);
+    this.setData({
+      newFolderName: e.detail.value
+    })
+  },
   // 发请求重命名文件或文件夹
-  renameRequest: function(e){
+  renameRequest: function (id, newName, fileType){
+    var _this = this;
     var map = {};
     //文件id 必填
-    map['id'] = "906b0683fbdb48189459e0ed0c6257fb";
+    map['id'] = id;
     //目录id   如果修改,则是将文件移动到该文件夹里
-    map['parentId'] = "abcdefg";
+    // map['parentId'] = "abcdefg";
     //修改文件夹名称或文件名称
-    map['fileName'] = "新建文件夹/文件名";
+    map['fileName'] = newName;
     //文件类型  如果是文件夹，则空着
-    map['fileType'] = "";
+    map['fileType'] = fileType;
     var mapString = JSON.stringify(map).slice(1);
     var value = mapString.substr(0, mapString.length - 1);
     wx.request({
       url: resourceUrl + 'wx_resource/updateResourceInfo?value=' + value,
       success: function (res) {
         console.log(res);
+        if(res.data.code == 1){
+          wx.showToast({
+            title: '修改成功！',
+            icon:"success"
+          })
+          // 隐藏弹出层
+          _this.setData({
+            renameFolderState: true
+          })
+          // 加载数据
+          _this.readyToLoad(_this.data.pageSize, _this.data.folderId);
+          // 显示taBar
+          wx.showTabBar({
+            animation: true
+          });
+          _this.setData({
+            tabBar: "ulBox",
+            iconSelect: "iconHide",
+            topBar: "topBar"
+          })
+        }else{
+          // 隐藏弹出层
+          _this.setData({
+            renameFolderState: true
+          })
+          wx.showToast({
+            title: '失败了o(╥﹏╥)o',
+            icon: "loading"
+          })
+        }
       }
     })
   },
@@ -690,9 +794,6 @@ Page({
               }
             })
           }
-        },
-        fail: function (res) {
-
         }
       })
     }else{
@@ -700,8 +801,74 @@ Page({
         deleteFolder: ""
       })
     }
-    
-    
+  },
+  // 移动文件
+  _moveFolder: function(e){
+    console.log(e);
+    console.log(this.data.selectedArray);
+    // 显示文件列表
+    this.setData({
+      tabBar: "ulBox",
+      iconSelect: "iconHide",
+      topBar: "topBar",
+      moveTo: "moveToShow"
+    })
+    this.readyToLoad(this.data.pageSize, this.data.folderId);
+  },
+  // 取消移动
+  _cancleMove: function () {
+    // 显示taBar
+    wx.showTabBar({
+      animation: true
+    });
+    this.setData({
+      moveTo: "moveToHide",
+      folderId: "root",
+      showBackArrow: false,
+      beforeIndex: 0
+        // 一定要有这一步，不然滑动到底部触发scroll事件的时候就会出错
+    })
+    this.readyToLoad(this.data.pageSize, this.data.folderId);
+  },
+  // 确认移动
+  _comfirmMove: function(){
+    console.log(this.data.folderId);
+    console.log(this.data.selectedArray);
+    var ids = this.data.selectedArray.join(",");
+    console.log(ids);
+    this.moveRequest(this.data.folderId, ids)
+  },
+  // 发请求批量移动
+  moveRequest: function(parentId, ids){
+    var _this = this;
+    var map={};
+    //要移动到的地方
+    map["parentId"] = parentId;
+    //要移动的文件，多个用逗号隔开
+    map["ids"] = ids;
+    var mapString = JSON.stringify(map).slice(1);
+    var value = mapString.substr(0, mapString.length - 1);
+    wx.request({
+      url: resourceUrl + 'wx_resource/moveFile?value=' +value,
+      success: function(res){
+        console.log(res);
+        if(res.data.code == 1){
+          _this.setData({
+            moveTo: "moveToHide"
+          })
+          wx.showToast({
+            title: '操作成功！',
+            icon:"success"
+          })
+          _this.readyToLoad(_this.data.pageSize, _this.data.folderId);
+        }else{
+          wx.showToast({
+            title: '失败了o(╥﹏╥)o',
+            icon:"loading"
+          })
+        }
+      }
+    })
   },
   // 判断边界值开始加载下一页
   startLoading: function (e) {
