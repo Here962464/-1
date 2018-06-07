@@ -46,6 +46,7 @@ App({
     photoId:"",
     curIndex:0,
     photoTotal:0,
+    photoDetailsIndex:0,
     userInfo: null, globalAlbumUrl:"https://www.sharismspace.com/album_server-0.0.1-SNAPSHOT/",
       globalUserUrl:"https://www.sharismspace.com/user_server-0.0.1-SNAPSHOT/",
       globalFileUrl:"https://www.sharismspace.com/file_server-0.0.1-SNAPSHOT/",

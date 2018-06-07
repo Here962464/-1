@@ -111,7 +111,9 @@ Page({
   checkDetails: function(e){
     console.log(e);
     console.log(e.currentTarget.id)
+    console.log(e.currentTarget.dataset.index)
     app.globalData.photoId = e.currentTarget.id;
+    app.globalData.photoDetailsIndex = e.currentTarget.dataset.index;
     wx.navigateTo({
       url: 'photoDetails/photoDetails',
     })

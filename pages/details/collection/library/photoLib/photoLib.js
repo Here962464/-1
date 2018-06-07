@@ -14,7 +14,8 @@ Page({
     scrollY:"",
     pageSize:8,
     total:0,
-    baseline:false
+    baseline:false,
+    userInfo:{}
   },
   menu: function(e){
     console.log(e);
@@ -131,5 +132,17 @@ Page({
       },
     })
     this.readyToLoad(_this.data.pageSize);
+    var tempUserInfo = {};
+    //获取用户信息
+    wx.getUserInfo({
+      success: function (res) {
+        console.log(res);
+        tempUserInfo.avatarUrl = res.userInfo.avatarUrl;
+        tempUserInfo.nickName = res.userInfo.nickName;
+        _this.setData({
+          userInfo: tempUserInfo
+        })
+      }
+    })
   }
 })

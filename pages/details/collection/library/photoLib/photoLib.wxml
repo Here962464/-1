@@ -1,4 +1,16 @@
 <view class="album">
+  <view class='userInfo'>
+    <image src='{{userInfo.avatarUrl}}' class='user-left'></image>
+    <view class='user-right'>
+      <view class='nickName'>{{userInfo.nickName}}</view>
+      <view class='progressBar-mask'>
+        <progress backgroundColor="rgba(0,0,128,0.2)" activeColor="#7FFF00" active="true" percent='30' class='progressBar'></progress>
+      </view>
+      <view class='capacity'>
+        容量：170GB/1024GB  30%
+      </view>
+    </view>
+  </view>
   <view class='hasAlbum' wx:if="{{!hasAlbum.has}}">
     <view class='addAlbum'>
       <image bindtap='addAlbum' src="../../../../icon/add.png"></image>

@@ -29,7 +29,7 @@ Page({
     this.setData({
       total: app.globalData.photoTotal,
       albumName: app.globalData.albumName,
-      index: app.globalData.curIndex+1
+      index: app.globalData.photoDetailsIndex+1
     })
 
     wx.showToast({
@@ -69,21 +69,27 @@ Page({
     // 判断
     // 如果X<0，则向左移动，如果X>0，则向右移动
     if (_this.data.X < 0) {
-      _this.data.index++;
+      _this.setData({
+        index: ++_this.data.index
+      })
       if (_this.data.index <= tempTotal){
         _this.loadImg();
       }else{
-        _this.data.index = tempTotal;
+        _this.setData({
+          index: tempTotal
+        })
       }
-      console.log(_this.data.index) 
     } else{
-      _this.data.index--;
+      _this.setData({
+        index: --_this.data.index
+      })
       if (_this.data.index > 0) {
         _this.loadImg();
       }else{
-        _this.data.index = 1;
+        _this.setData({
+          index: 1
+        })
       }
-      console.log(_this.data.index) 
     }
   },
   loadImg: function(){

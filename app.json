@@ -1,21 +1,15 @@
 {
   "pages": [
-    "pages/details/collection/library/fileLib/fileLib",
-    "pages/details/blogList/blogList",
-    "pages/index/index",
+    "pages/home/home",
     "pages/mine/mine",
-    
+    "pages/details/blogList/blogList",
+    "pages/details/collection/library/fileLib/fileLib",
 "pages/details/collection/library/fileLib/sonFolder/sonFolder",
    "pages/details/collection/library/photoLib/photoLib",
-   
     "pages/details/followList/followList",
     "pages/details/fansList/fansList",
     "pages/details/writeBlog/writeBlog",
-    "pages/details/blogList/secondary/secondary",  "pages/details/collection/library/photoLib/photoes/photoes",    
-    "pages/ details/collection/library/photoLib/photoes/photoDetails/photoDetails","pages/details/collection/library/photoLib/resetAlbum/resetAlbum",   "pages/details/collection/library/photoLib/photoes/addPhotoes/addPhotoes","pages/details/collection/library/photoLib/addAlbum/addAlbum",
-    "pages/messages/messages",
-    "pages/search/search",
-    "pages/logs/logs",
+    "pages/details/blogList/secondary/secondary",  "pages/details/collection/library/photoLib/photoes/photoes",    "pages/details/collection/library/photoLib/resetAlbum/resetAlbum", "pages/details/collection/library/photoLib/photoes/photoDetails/photoDetails",  "pages/details/collection/library/photoLib/photoes/addPhotoes/addPhotoes","pages/details/collection/library/photoLib/addAlbum/addAlbum",
     "pages/details/loginByMail/loginByMail",
     "pages/details/collection/collection",
     "pages/details/setting/setting",
@@ -31,6 +25,12 @@
   },
   "tabBar": {
     "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "pages/icon/mine.png",
+        "selectedIconPath": "pages/icon/mine-active.png"
+      },
       {
         "pagePath": "pages/details/blogList/blogList",
         "text": "博客",
@@ -48,12 +48,6 @@
         "text": "文件",
         "iconPath": "pages/icon/file.png",
         "selectedIconPath": "pages/icon/file-active.png"
-      },
-      {
-        "pagePath": "pages/mine/mine",
-        "text": "我的",
-        "iconPath": "pages/icon/mine.png",
-        "selectedIconPath": "pages/icon/mine-active.png"
       }
     ]
   }

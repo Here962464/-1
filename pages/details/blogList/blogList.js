@@ -6,6 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // 顶部信息
+    userInfo:{},
     // 博客列表
     blogList: [],
     // 列表开关
@@ -60,6 +62,18 @@ Page({
     });
     var _this = this;
     this.readyToLoad(_this.data.pageSize);
+    var tempUserInfo = {};
+    //获取用户信息
+    wx.getUserInfo({
+      success: function (res) {
+        console.log(res);
+        tempUserInfo.avatarUrl = res.userInfo.avatarUrl;
+        tempUserInfo.nickName = res.userInfo.nickName;
+        _this.setData({
+          userInfo: tempUserInfo
+        })
+      }
+    })
   },
   // 点击菜单栏博客
   switchBlog: function(){
