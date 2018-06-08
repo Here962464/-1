@@ -1,0 +1,11 @@
+<!--pages/welcome/welcome.wxml-->
+<view class="contain">
+   <swiper class="welcome-wrapper" indicator-dots>
+      <swiper-item class="welcome-item welcome-item1">
+        <view class=""></view>
+      </swiper-item>
+      <swiper-item class="welcome-item"></swiper-item>
+      <swiper-item class="welcome-item"></swiper-item>
+  </swiper> 
+</view>
+
