@@ -1,8 +1,22 @@
 <!--pages/home/home.wxml-->
+<view class="home-contain">
+  
+  <view class='title-wrapper'>
+    <view class='logo-wrapper'>
+      <image src="./img/logo160x160.png"></image>
+    </view>
+    <view class='title'>
+      <view class='title1'>易享阁</view>
+      <view class='title2'>--个人管理中心</view>
+    </view>
+  </view>
 
-<view>
-    
+  <view class='des-wrapper'>
+    <text class='des-p'> 易享阁----为您提供最好的存储共享的服务！</text>
+    <text class='des-p'>在易享阁，您可以定格生活中的点点滴滴，可以共享您的"宝藏"，可以得到他人的经验技巧以及宝贵资源，可以线上互动，交到志同道合的朋友！</text>
+  </view>
+  <view class='des-wrapper'>
+    <text class='des-title'>易享阁-个人管理中心</text>
+    <text class='des-p'>作为易享阁的分支系统之一，让您能够管理自己的资源，包括博客、相册以及文件模块的管理。</text>
+  </view>
 </view>
-<text>
-    
-</text>
