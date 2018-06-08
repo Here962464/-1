@@ -47,7 +47,7 @@ Page({
         if (res.authSetting['scope.userInfo']) {
           // 已经授权
           // 率先加载用户界面
-          wx.navigateTo({
+          wx.switchTab({
             url: 'home/home'
           })
           //调用 getUserInfo 获取头像昵称
