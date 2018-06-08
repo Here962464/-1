@@ -1,27 +1,18 @@
-<view class="container" wx:if="{{!show}}">   
-  <view class='logIn'>
-    <button lang="zh_CN" bindgetuserinfo="getUserInfo"  open-type="getUserInfo" class='wxlog'>微信授权登录</button>
-    <text class='loginByMail' bindtap="loginByMail">已有账号？立即登录</text>
-  </view>
-</view>
-<!--登录/注册  -->
-<view class='logInsuccess' wx:else>
-  <view class='top'>
-    <image class='avatar' src="{{userInfo.avatarUrl}}"></image>
-    <view class='info'>
-      <text class='nickName'>{{userInfo.userNickname}}</text>
-      <text class='gender'>{{userInfo.gender}}</text>
+<view class="home-contain">   
+  <view class='title-wrapper'>
+    <view class='logo-wrapper'>
+      <image src="../home/img/logo160x160.png"></image>
+    </view>
+    <view class='title'>
+      <view class='title1'>易享阁</view>
+      <view class='title2'>--个人管理中心</view>
     </view>
   </view>
-  <!--总信息栏  -->
-  <import src="../templates/mine-template/floor01/floor01.wxml" />
-  <template is="floor01" data="{{haha}}" />
-  <import src="../templates/mine-template/floor02/floor02.wxml" />
-  <template is="floor02" />
-  <navigator url="../details/collection/collection" hover-class="none" class='floor03'>
-    <image src="../icon/collection.png" class='collection fl'></image><text class='fl'>收藏</text><image src="../icon/go.png" class='go'></image>
-  </navigator>
-  <navigator url="../details/setting/setting" class='floor04' hover-class='none'>
-    <image src="../icon/setting.png" class='setting fl'></image><text class='fl'>设置</text><image src="../icon/go.png" class='go'></image>
-  </navigator>
+  <view class='introduciton-wrapper'>
+    <view class='intro1'>创你所想，</view>
+    <view class='intro2'>享你所爱！</view>
+  </view>
+  <view class='logIn'>
+    <button lang="zh_CN" bindgetuserinfo="getUserInfo"  open-type="getUserInfo" class='wxlog'>立即体验</button>
+  </view>
 </view> 

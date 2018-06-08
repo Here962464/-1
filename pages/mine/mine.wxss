@@ -1,89 +1,63 @@
 /*公共样式  */
-.space{
-  width: 100%;
-  height: 40rpx;
-  background: #eee; 
+.home-contain{
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(top , rgba(238, 1, 49, 0) , rgba(28, 105, 245, 0.16) 92%);
+  background: -o-linear-gradient(top , rgba(238, 1, 49, 0) , rgba(28, 105, 245, 0.16) 92%);
+  background: -ms-linear-gradient(top , rgba(238, 1, 49, 0) , rgba(28, 105, 245, 0.16) 92%);
+  background: -moz-linear-gradient(top , rgba(238, 1, 49, 0) , rgba(28, 105, 245, 0.16) 92%);
+  background: -webkit-linear-gradient(top , rgba(238, 1, 49, 0) , rgba(28, 105, 245, 0.16) 92%);
+  color: #333;
+  padding-top: 10rpx;
 }
-.fl{
-  float: left;
-}
-
-.logIn{
-  font-size: 28rpx;
-  color: #409eff;
-  align-content: center;
-  align-items: center;
-  margin: 50% auto;
-}
-.wxlog{
-  width: 300rpx;
-  margin: 10rpx auto;
-  background: #409eff;
-  color: #fff;
-}
-.logIn .loginByMail{
-  width: 100%;
-  padding: 30rpx 0;
-  display: inline-block;
-  text-align: center;
-  text-decoration: underline;
-}
-/*头像信息  */
- .logInsuccess {
+.title-wrapper{
   display: flex;
-  flex-direction: column;
-  align-items: left;
-  padding: 10rpx 0;
+  display: -webkit-flex;
+  width: 90%;
+  height: 150rpx;
+  margin: 180rpx auto 40rpx;
+  /* background: yellowgreen; */
 }
-.top{
-  padding: 20rpx 20rpx;
+.logo-wrapper{
+  width: 150rpx;
+}
+.logo-wrapper image{
   width: 100%;
-  border-bottom: 2rpx solid #ccc;
+  height: 100%;
 }
-.avatar {
-  width: 88rpx;
-  height: 88rpx;
-  margin: 10rpx;
-  float: left;
-  border-radius: 50%;
-}
-.info{
-  font-size:32rpx;
-  color: #666;
-  float: left;
-  padding-left: 30rpx;
-} 
-.nickName{
-  display: block;
-  padding-top: 20rpx;
+.title{
+  flex: 1;
   color: #333;
 }
-.gender{
-  font-size:28rpx;
-  display: block;
+.title1{
+    line-height: 90rpx;
+    font-size: 60rpx;
+    font-weight: bold;
+    text-indent: 1em;
 }
-@import "../templates/mine-template/floor01/floor01.wxss";
-@import "../templates/mine-template/floor02/floor02.wxss";
-.floor03,.floor04{
-  padding: 40rpx 0;
-  width: 100%;
-  border-bottom: 2rpx solid #ccc;
-  text-align: center;
+.title2{
+    line-height: 60rpx;
+    text-align: right;
+    font-size: 50rpx;
+    font-family: '华文行楷';
 }
-.floor03 text,.floor04 text{
-  padding: 10rpx 0;
+.introduciton-wrapper{
+  width: 70%;
+  margin: 100rpx auto 0;
+  line-height: 100rpx;
+  font-size: 60rpx;
+  font-family: "华文行楷";
 }
-.hover-collection{
-  background: #409eff;
-  color:#fff;
+.intro2{
+  text-align: right;
 }
-.collection,.setting{
-  width: 56rpx;
-  height: 56rpx;
-  padding: 0 20rpx;
+.logIn{
+  margin-top: 200rpx;
 }
-.go{
-  width: 56rpx;
-  height: 56rpx;
-  float: right;
+.logIn button{
+  width: 200rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #4093ff;
+  color: #fff;
 }

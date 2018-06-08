@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/mine/mine",
     "pages/details/collection/library/photoLib/photoLib",
     "pages/details/blogList/blogList",
     "pages/details/collection/library/fileLib/fileLib",
     "pages/home/home",
-    "pages/mine/mine",
 "pages/details/collection/library/fileLib/sonFolder/sonFolder",
     "pages/details/followList/followList",
     "pages/details/fansList/fansList",
@@ -29,8 +29,8 @@
       {
         "pagePath": "pages/home/home",
         "text": "首页",
-        "iconPath": "pages/icon/home.png",
-        "selectedIconPath": "pages/icon/home-active.png"
+        "iconPath": "pages/icon/mine.png",
+        "selectedIconPath": "pages/icon/mine-active.png"
       },
       {
         "pagePath": "pages/details/blogList/blogList",
