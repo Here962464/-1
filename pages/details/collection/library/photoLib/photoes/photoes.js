@@ -69,6 +69,12 @@ Page({
     console.log(e.currentTarget.dataset.index);
     app.globalData.curIndex = e.currentTarget.dataset.index;
   },
+  // 上传照片
+  uploadPhoto: function(){
+    wx.navigateTo({
+      url: "addPhotoes/addPhotoes",
+    })
+  },
   readyToLoad: function (pageSize){
     var _this = this;
     var map = {};
@@ -88,16 +94,20 @@ Page({
       method: "POST",
       success: function (res) {
         app.globalData.photoTotal = res.data.value.total;
-        var list = res.data.value.list
+        var list = res.data.value.list;
+        if (res.data.value.total==0){
+          wx.hideToast();
+        }else{
+          wx.hideToast();
+          _this.setData({
+            hasPhoto: {
+              messeage: list,
+              has: true
+            },
+            total: res.data.value.total
+          });
+        }
         console.log(res)
-        wx.hideToast();
-        _this.setData({
-          hasPhoto: {
-            messeage: list,
-            has: true
-          },
-          total: res.data.value.total
-        });
         // if(res.data.code==1){
         //   _this.setData({
         //     hasPhoto:{
