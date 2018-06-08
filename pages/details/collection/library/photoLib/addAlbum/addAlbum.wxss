@@ -142,15 +142,19 @@ form{
 .floor7{
   width: 400rpx;
   height: 100rpx;
-  margin: 10rpx auto;
+  margin: 30rpx auto;
 }
-.floor7 .cancle{
+button.cancle{
   margin-left: -40rpx;
   padding: 0 40rpx;
+  line-height: 70rpx;
+  height: 70rpx;
 }
-.floor7 .submit{
+button.submit{
   padding: 0 40rpx;
   color: #fff;
+  line-height: 70rpx;
   margin-left: 40rpx;
   background: #409eff;
+  height: 70rpx;
 }

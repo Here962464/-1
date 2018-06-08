@@ -29,8 +29,8 @@
       {
         "pagePath": "pages/home/home",
         "text": "首页",
-        "iconPath": "pages/icon/mine.png",
-        "selectedIconPath": "pages/icon/mine-active.png"
+        "iconPath": "pages/icon/home.png",
+        "selectedIconPath": "pages/icon/home-active.png"
       },
       {
         "pagePath": "pages/details/blogList/blogList",

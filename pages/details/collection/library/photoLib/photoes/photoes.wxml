@@ -9,7 +9,7 @@
 <!--先写简单一点  等你有时间了一定要去研究QQ空间那个相册的细节功能，真的很全，仿照QQ空间完善功能！  -->
   <view wx:else catchtap="cancleDelete">
     <scroll-view style='height:{{scrollY}}px;' bindscrolltolower="startLoading" scroll-y="true" scroll-with-animation="true" lower-threshold>
-      <view catchtap='uploadPhoto'>
+      <view class='addPhotoes' catchtap='uploadPhoto'>
         <button class='addPhotoes-button' size='mini'>添加照片</button>
       </view>
       <view catchtap='getIndex' data-index="{{index}}" bindlongpress="menu" class='photoBlock' wx:key="{{item.id}}" wx:for="{{hasPhoto.messeage}}">

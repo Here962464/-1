@@ -48,14 +48,16 @@
 }
 .cancle{
   width: 20%;
+  line-height: 70rpx;
   position: absolute;
-  top: 25%;
+  top: 30%;
   left: 30%;
 }
 .confirm{
   width: 20%;
+  line-height: 70rpx;
   position: absolute;
-  top: 25%;
+  top: 30%;
   left: 60%;
   color: #fff;
   background: #409eff;
