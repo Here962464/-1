@@ -7,8 +7,8 @@ var fileUrl = app.globalData.globalFileUrl;
 Page({
   data: {
     toAddTips: false,
-    pubState: "1",
-    psdState: "0",
+    pubState: 1,
+    psdState: 0,
     psdBackground: "rgb(245,247,250)",
     psdFocus: false,
     coverUrl:"",
@@ -22,8 +22,8 @@ Page({
     albumSort:"",
     description:"",
     albumName:"",
-    privacySet:"",
-    setPassword:"",
+    privacySet:0,
+    setPassword:0,
     albumPassword:"",
     albumIcon:"",
     iconPath:""
@@ -60,15 +60,19 @@ Page({
       })
     }
   },
+  // 是否公开
   privacy: function(e){
     var privacySet = e.detail.value;
+    console.log(privacySet);
     if (privacySet){
+    console.log(1)
       this.setData({
-          privacySet: "1"
+        pubState: 1
       })
     }else{
+      console.log(0)
       this.setData({
-          privacySet: "0"
+        pubState: 0
       })
     }
   },
@@ -97,14 +101,14 @@ Page({
         psdState: false,
         psdBackground: "#fff",
         psdFocus: true,
-          setPassword: "1"
+          setPassword: 1
       })
     }else{
       this.setData({
         psdState: true,
         psdBackground: "rgb(245,247,250)",
         psdFocus: false,
-          setPassword: "0"
+          setPassword: 0
       })
     }
   },
@@ -147,7 +151,7 @@ Page({
       count:1,
       success: function(res) {
         wx.showToast({
-          title: '正在上传...',
+          title: '封皮上传中...',
           icon: 'loading',
           mask: true,
           duration: 10000
@@ -168,6 +172,10 @@ Page({
           success: function (res) {
             wx.hideToast();
             // 顺给我返回的是一个字符串，不是json  所以转换了一下
+            wx.showToast({
+              title: '封皮上传成功！',
+              icon:"success"
+            })
             var temp = JSON.parse(res.data)
             console.log(temp)
             console.log(res)
@@ -195,6 +203,7 @@ Page({
       },
     })
   },
+  // 请求创建文件夹
   formSubmit: function(e){
     var map = {};
     // 数组转字符串
@@ -211,7 +220,11 @@ Page({
     //是否设置相册密码  1设置 0不设置
     map['setPassword'] = this.data.setPassword;
     //相册密码
-    map['albumPassword'] = this.data.albumPassword;
+    if (this.data.setPassword){
+      map['albumPassword'] = this.data.albumPassword;
+    }else{
+      console.log("没有设置密码")
+    }
     //相册封面图标标识   如果用户没有自定义封面 设置为"default"
     map['albumIcon'] = this.data.albumIcon;
     //相册封面图标路径 url             
@@ -243,28 +256,29 @@ Page({
         url: albumUrl +'wx_album/createAlbum?value='+ value,
         method:"POST",
         success: function (res) {
-          if (res.data.message==1){
+          if (res.data.code==1){
             wx.showToast({
               title: "创建成功",
               icon: 'success',
               duration: 3000
             })
             setTimeout(function () {
-              wx.redirectTo({
+              wx.navigateBack({
                 url: '../photoLib',
               })
             }, 3000)
-          }else{
+          } else if (res.data.code == -4){
             wx.showToast({
-              title: "创建失败",
+              title: "该相册已存在！",
               icon: 'loading',
               duration: 3000
             })
-            setTimeout(function () {
-              wx.redirectTo({
-                url: '../photoLib',
-              })
-            }, 3000)
+          }else{
+            wx.showToast({
+              title: "网络错误",
+              icon: 'loading',
+              duration: 3000
+            })
           }
           console.log(res)
         },

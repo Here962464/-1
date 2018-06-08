@@ -86,36 +86,45 @@
 .blogBlock{
   width: 100%;
   overflow: hidden;
-  padding-top: 30rpx;
-  padding-bottom: 30rpx;
+  padding-top: 25rpx;
+  padding-bottom: 25rpx;
   padding-left: 30rpx;
   border-bottom: 2rpx solid #ccc;
 }
 .title{
-  font-size: 32rpx;
+  font-size: 36rpx;
+  line-height: 60rpx;
   font-weight: bold;
+  color: #3B3B3B;
 }
 .baseBlog{
+  width: 85%;
   overflow: hidden;
+  line-height: 60rpx;
   text-overflow:ellipsis;
   white-space: nowrap;
-  font-size: 28rpx;
+  font-size: 32rpx;
+  color: #1C1C1C;
   padding-left: 20rpx;
   padding-right: 20rpx;
 }
 .detail{
   font-size: 24rpx;
   display: flex;
+  color: #515151;
 }
 .nature{
   margin-right: 20rpx;
 }
 .visitors,.praise,.forward{
   display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
 }
 .visitors image,.praise image,.forward image{
-  width: 30rpx;
-  height: 30rpx;
+  width: 26rpx;
+  height: 26rpx;
   margin-left: 30rpx;
   margin-right: 10rpx;
 }

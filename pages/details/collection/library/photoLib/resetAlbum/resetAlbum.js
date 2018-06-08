@@ -11,7 +11,8 @@ Page({
     iconPath:"",
     isDel:0,
     privacySet:0,
-    setPassword:""
+    setPassword:"",
+    coverUrl:""
   },
   changeCover: function(){
     var _this = this;
@@ -20,7 +21,7 @@ Page({
       success: function (res) {
         //加载动画
         wx.showToast({
-          title: '加载中...',
+          title: '封皮上传中...',
           icon: 'loading',
           mask: true,
           duration: 10000
@@ -32,7 +33,7 @@ Page({
         });
         // 将封面存到服务器
         wx.uploadFile({
-          url: fileUrl +'wx_file/upload',
+          url: fileUrl +'file/upload',
           filePath: tempFilePaths,
           name: 'file',
           formData: {
@@ -42,8 +43,15 @@ Page({
             //上传成功，隐藏加载动画
             wx.hideToast();
             // 顺给我返回的是一个字符串，不是json  所以转换了一下
+            wx.showToast({
+              title: '封皮上传成功！',
+              icon:"success"
+            })
             var temp = JSON.parse(res.data);
             console.log(temp);
+            _this.setData({
+              coverUrl: temp.value
+            })
           },
           fail: function (res) {
             console.log(res)
@@ -66,7 +74,8 @@ Page({
     //修改相册封面图标标识   如果用户没有自定义封面 设置为"default"
     map['albumIcon'] = "default";
     //修改相册封面图标路径 url
-    map['iconPath'] = this.data.iconPath;
+    map['iconPath'] = this.data.coverUrl;
+    console.log(this.data.coverUrl)
     
     var mapString = JSON.stringify(map).slice(1);
     var value = mapString.substr(0, mapString.length - 1);

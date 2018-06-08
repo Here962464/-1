@@ -44,7 +44,7 @@
     <button catchtap='_comfirmMove' size='mini' plain="true" class='cancleEdit'>确定</button>
   </view>
   <!--重命名弹出层  -->
-  <modal hidden="{{renameFolderState}}" title="重命名" confirm-text="确认" cancel-text="取消" bindcancel="cancleRenameFolder" bindconfirm="confirmRenameFolder"> 
+  <modal wx:if="{{!renameFolderState}}" title="重命名" confirm-text="确认" cancel-text="取消" bindcancel="cancleRenameFolder" bindconfirm="confirmRenameFolder"> 
     <input class='inputFileName'  value="{{oldFileName}}" bindblur='getNewName' type='text' placeholder="{{mention}}" auto-focus/>
   </modal>
   <!--底部工具栏  -->
@@ -63,7 +63,7 @@
   </view> 
   <view class='content'>
     <!--弹出层  -->
-    <modal hidden="{{newFolderState}}" title="新建文件夹" confirm-text="确认" cancel-text="取消" bindcancel="cancleNewFolder" bindconfirm="confirmNewFolder"> 
+    <modal wx:if="{{!newFolderState}}" title="新建文件夹" confirm-text="确认" cancel-text="取消" bindcancel="cancleNewFolder" bindconfirm="confirmNewFolder"> 
       <input class='inputFileName' value="{{fileName}}" bindblur='getFileName' type='text' placeholder="{{mentionFileName}}" auto-focus/>
         <!-- 是否公开 -->
       <checkbox-group bindchange="isChecked">

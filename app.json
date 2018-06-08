@@ -1,11 +1,11 @@
 {
   "pages": [
-    "pages/home/home",
-    "pages/mine/mine",
+    "pages/details/collection/library/photoLib/photoLib",
     "pages/details/blogList/blogList",
     "pages/details/collection/library/fileLib/fileLib",
+    "pages/home/home",
+    "pages/mine/mine",
 "pages/details/collection/library/fileLib/sonFolder/sonFolder",
-   "pages/details/collection/library/photoLib/photoLib",
     "pages/details/followList/followList",
     "pages/details/fansList/fansList",
     "pages/details/writeBlog/writeBlog",
@@ -21,7 +21,8 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "易享阁",
-    "navigationBarTextStyle": "#fff"
+    "navigationBarTextStyle": "#fff",
+    "enablePullDownRefresh":true
   },
   "tabBar": {
     "list": [

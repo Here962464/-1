@@ -64,7 +64,7 @@ Page({
             },
             total: res.data.value.total
           })
-        } else if (rcode == -1) {
+        } else if (code == -1) {
           _this.setData({
             hasAlbum: {
               message: "您暂时还没有相册哟，点击添加相册，上传精美图片~",
@@ -117,6 +117,9 @@ Page({
         baseline:true
       })
     }
+  },
+  onShow: function(){
+    this.onLoad();
   },
   /**
    * 生命周期函数--监听页面加载

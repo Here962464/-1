@@ -56,6 +56,10 @@
   height: 400rpx;
   margin: 50% auto;
   text-align: center;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
 }
 .addAlbum image{
   width: 100rpx;
@@ -70,24 +74,31 @@
 }
 .addNewAlbum{
   width: 300rpx;
-  height: 260rpx;
+  height: 258rpx;
   float: left;
   color: #ccc;
+  border-radius: 20rpx;
   margin-top: 20rpx;
   margin-left: 46rpx;
   border: 2rpx dashed #ccc;
+  display: flex;
   justify-content: center;
+  align-content: center;
+  align-items: center;
   text-align: center;
   font-size: 200rpx;
 }
 .albumBlock{
   width: 300rpx;
-  height: 300rpx;
+  height: 260rpx;
+  border-radius: 20rpx;
   display: inherit;
+  margin-bottom: 40rpx;
   margin-top: 20rpx;
   position: relative;
   float: left;
   margin-left: 46rpx;
+   box-shadow: 2rpx 2rpx 20rpx 0rpx #888888; 
 }
 .setting{
   width: 50rpx;
@@ -128,6 +139,7 @@
   height: 260rpx;
   background: #000;
   opacity: 0.6;
+  border-radius: 20rpx;
   position: absolute;
   top: 0;
   left: 0;
@@ -136,6 +148,7 @@
 .albumBlock .albumCover{
   width: 300rpx;
   height: 260rpx;
+  border-radius: 20rpx;
   position: absolute;
   top: 0;
   left: 0;

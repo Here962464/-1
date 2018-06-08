@@ -70,12 +70,12 @@
   width: 100%;
   position: relative;
 }
-.delete{
+button.delete{
+  outline: none;
   width: 80%;
-  height: 100rpx;
-  color: #fff;
-  background: red;
-  border: 2rpx solid red;
+  line-height: 80rpx;
+  color: tomato;
+  border: 2rpx solid tomato;
   position: absolute;
   top:50%;
   left: 10%;

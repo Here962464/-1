@@ -17,7 +17,7 @@
     </view>
     <view class='space'></view>   
     <view class='floor5'>
-      <button bindtap='deleteAlbum' hover-class="button-hover" class='delete'>删除相册</button>
+      <button plain="true" bindtap='deleteAlbum' hover-class="button-hover" class='delete'>删除相册</button>
     </view>
   </form>
 </view>

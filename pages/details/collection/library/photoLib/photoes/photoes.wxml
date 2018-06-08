@@ -12,7 +12,7 @@
       <navigator url='addPhotoes/addPhotoes' bindtap='uploadPhoto' class='add'>+</navigator>
       <view catchtap='getIndex' data-index="{{index}}" bindlongpress="menu" class='photoBlock' wx:key="{{item.id}}" wx:for="{{hasPhoto.messeage}}">
         <image id="{{item.id}}" style='display:{{display}};' catchtap='deletePhoto' class='deleteIcon' src='{{select}}'></image>
-        <image data-index='{{index}}' catchtap='checkDetails' id="{{item.id}}" mode='aspectFit' lazy-load="true" class='photo' src='{{item.photoPath}}'></image>
+        <image data-index='{{index}}' catchtap='checkDetails' id="{{item.id}}" mode='aspectFill' lazy-load="true" class='photo' src='{{item.photoPath}}'></image>
          <!-- <text class='addTime'>{{item.addTime}}</text>  -->
       </view>
       <view wx:if="{{baseline}}" class='baseline'>-----我是有底线的-----</view>

@@ -29,7 +29,7 @@
           <view class='albumName'>{{item.albumName}}</view>
           <view class='createDate'>{{item.createDate}}</view> 
           <view class='mask'></view>
-          <image  mode='aspectFit' class='albumCover' src='{{item.iconPath}}'></image>
+          <image  mode='aspectFill' class='albumCover' src='{{item.iconPath}}'></image>
         </view>
       </view>
     <view wx:if="{{baseline}}" class='baseline'>-----我是有底线的-----</view>

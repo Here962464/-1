@@ -161,8 +161,10 @@
 .checkBox{
   padding-top: 30rpx;
 }
-.inputFileName{
+input.inputFileName{
   color: #000;
+  height: 80rpx;
+  border-bottom: 2rpx solid rgba(81, 195, 50, 0.3);
 }
 /*顶部工具栏  */
 .topBar{
