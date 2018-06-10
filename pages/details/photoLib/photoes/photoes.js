@@ -11,7 +11,7 @@ Page({
     total: 0,
     baseline: false,
     upLoadUrl:"",
-    select:"../../../../../icon/delete.png",
+    select:"../../../icon/delete.png",
     display: "none",
     photoId:[]
   },

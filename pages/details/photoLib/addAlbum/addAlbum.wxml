@@ -17,7 +17,7 @@
           <input focus wx:else bindblur='subTipsContent' type='text' class='tipsContent' />
         </view>
       </view>
-      <view wx:if="{{warnText}}" class='warnText alignment'><image src='../../../../../icon/warn.png'></image>您已添加相应的标签了哟~</view>
+      <view wx:if="{{warnText}}" class='warnText alignment'><image src='../../../icon/warn.png'></image>您已添加相应的标签了哟~</view>
       <view class='floor3 pad'>
         <text class='fl alignment'>是否公开</text>
         <switch name="privacySet" color='#409eff' bindchange='privacy' checked="{{pubState}}" class='public fl' />

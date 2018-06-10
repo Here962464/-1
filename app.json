@@ -1,21 +1,12 @@
 {
   "pages": [
+    "pages/details/fileLib/fileLib",
+    "pages/details/photoLib/photoLib",
     "pages/mine/mine",
-    "pages/details/collection/library/photoLib/photoLib",
     "pages/details/blogList/blogList",
-    "pages/details/collection/library/fileLib/fileLib",
     "pages/home/home",
-"pages/details/collection/library/fileLib/sonFolder/sonFolder",
-    "pages/details/followList/followList",
-    "pages/details/fansList/fansList",
-    "pages/details/writeBlog/writeBlog",
-    "pages/details/blogList/secondary/secondary",  "pages/details/collection/library/photoLib/photoes/photoes",    "pages/details/collection/library/photoLib/resetAlbum/resetAlbum", "pages/details/collection/library/photoLib/photoes/photoDetails/photoDetails",  "pages/details/collection/library/photoLib/photoes/addPhotoes/addPhotoes","pages/details/collection/library/photoLib/addAlbum/addAlbum",
-    "pages/details/loginByMail/loginByMail",
-    "pages/details/collection/collection",
-    "pages/details/setting/setting",
-    "pages/details/uploadPhoto/uploadPhoto",
-    "pages/details/uploadFile/uploadFile",     
-     "pages/details/collection/library/myPraise/myPraise"
+    "pages/details/blogList/secondary/secondary",  "pages/details/photoLib/photoes/photoes",   "pages/details/photoLib/resetAlbum/resetAlbum", "pages/details/photoLib/photoes/photoDetails/photoDetails",  "pages/details/photoLib/photoes/addPhotoes/addPhotoes","pages/details/photoLib/addAlbum/addAlbum",
+    "pages/details/fileLib/uploadFile/uploadFile"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -39,13 +30,13 @@
         "selectedIconPath": "pages/icon/blog-active.png"
       },
       {
-        "pagePath": "pages/details/collection/library/photoLib/photoLib",
+        "pagePath": "pages/details/photoLib/photoLib",
         "text": "相册",
         "iconPath": "pages/icon/album.png",
         "selectedIconPath": "pages/icon/album-active.png"
       },
       {
-        "pagePath": "pages/details/collection/library/fileLib/fileLib",
+        "pagePath": "pages/details/fileLib/fileLib",
         "text": "文件",
         "iconPath": "pages/icon/file.png",
         "selectedIconPath": "pages/icon/file-active.png"

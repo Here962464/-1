@@ -1,7 +1,7 @@
 <view class="fileBlok">
   <view class='topMenu'>
     <view wx:if="{{showBackArrow}}" class='backToParent'>
-      <image id="{{folderId}}" catchtap='backToParent' src='../../../../icon/back.png' class='backImg'></image>
+      <image id="{{folderId}}" catchtap='backToParent' src='../../icon/back.png' class='backImg'></image>
       <view class='folderName'>{{folderName}}</view>
     </view>
     <view wx:else class='userInfo'>
@@ -18,15 +18,15 @@
     </view>
     <view class='tools'>
       <view class='search' catchtap='_search'>
-        <image src='../../../../icon/search.png'></image>
+        <image src='../../icon/search.png'></image>
         分类查询
       </view>
       <view class='upload' catchtap='_upload'>
-        <image src='../../../../icon/uploadFile.png'></image>
+        <image src='../../icon/uploadFile.png'></image>
         上传文件
       </view>
       <view class='creat' catchtap='_creat'>
-        <image src='../../../../icon/newFolder.png'></image>
+        <image src='../../icon/newFolder.png'></image>
         新建文件夹
       </view>
     </view>

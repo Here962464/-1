@@ -13,7 +13,7 @@
   </view>
   <view class='hasAlbum' wx:if="{{!hasAlbum.has}}">
     <view class='addAlbum'>
-      <image bindtap='addAlbum' src="../../../../icon/add.png"></image>
+      <image bindtap='addAlbum' src="../../icon/add.png"></image>
   {{hasAlbum.message}}
     </view>
   </view>
@@ -24,7 +24,7 @@
       <view wx:key="{{item.id}}" class='message' wx:for="{{hasAlbum.message}}">
         <view  catchtap='albumDetail' id="{{item.id}}" class='albumBlock'>
           <view id="{{item.id}}" catchtap='menu' class='setting'>
-            <image src='../../../../icon/setAlbum.png'></image>
+            <image src='../../icon/setAlbum.png'></image>
           </view>
           <view class='albumName'>{{item.albumName}}</view>
           <view class='createDate'>{{item.createDate}}</view> 

@@ -38,9 +38,9 @@ Page({
     topBar:"topBar",
     chooseAmount:1,
     chooseAll:"全选",
-    renameImgUrl:"../../../../icon/renameFolder.png",
-    deleteImgUrl:"../../../../icon/deleteFolder.png",
-    moveImgUrl:"../../../../icon/move.png",
+    renameImgUrl:"../../icon/renameFolder.png",
+    deleteImgUrl:"../../icon/deleteFolder.png",
+    moveImgUrl:"../../icon/move.png",
     deleteFolder:"_deleteFolder",
     // 重命名
     mention:"请输入文件夹名称",
@@ -122,7 +122,7 @@ Page({
           if (tempResArray[i].folder == 1){
             // 如果是文件夹
             // 图标
-            tempResArray[i]["imgUrl"] = "../../../../icon/folder.png";
+            tempResArray[i]["imgUrl"] = "../../icon/folder.png";
             // 大小
             tempResArray[i]["computedFileSize"] = "";
             // 点击事件类型
@@ -144,7 +144,7 @@ Page({
             // console.log(filter.match(patt1));
             if (filter.match(pattTxt)){
               // 图标
-              tempResArray[i]["imgUrl"] = "../../../../icon/txt.png";
+              tempResArray[i]["imgUrl"] = "../../icon/txt.png";
               var tempSize = tempResArray[i].fileSize;
               // 判断文件大小
               if(tempSize == null){
@@ -158,7 +158,7 @@ Page({
               tempResArray[i]["cdOrDownLoad"] = tempResArray[i].filePath;
               tempFolderList.push(tempResArray[i]);
             } else if (filter.match(pattDocx)){
-              tempResArray[i]["imgUrl"] = "../../../../icon/wordFile.png";
+              tempResArray[i]["imgUrl"] = "../../icon/wordFile.png";
               var tempSize = tempResArray[i].fileSize;
               // 判断文件大小
               if (tempSize == null) {
@@ -172,7 +172,7 @@ Page({
               tempResArray[i]["cdOrDownLoad"] = tempResArray[i].filePath;
               tempFolderList.push(tempResArray[i]);
             } else if (filter.match(pattHtml)) {
-              tempResArray[i]["imgUrl"] = "../../../../icon/html.png";
+              tempResArray[i]["imgUrl"] = "../../icon/html.png";
               var tempSize = tempResArray[i].fileSize;
               // 判断文件大小
               if (tempSize == null) {
@@ -186,7 +186,7 @@ Page({
               tempResArray[i]["cdOrDownLoad"] = tempResArray[i].filePath;
               tempFolderList.push(tempResArray[i]);
             } else if (filter.match(pattPdf)) {
-              tempResArray[i]["imgUrl"] = "../../../../icon/PDF.png";
+              tempResArray[i]["imgUrl"] = "../../icon/PDF.png";
               var tempSize = tempResArray[i].fileSize;
               // 判断文件大小
               if (tempSize == null) {
@@ -200,7 +200,7 @@ Page({
               tempResArray[i]["cdOrDownLoad"] = tempResArray[i].filePath;
               tempFolderList.push(tempResArray[i]);
             } else if (filter.match(pattJs)) {
-              tempResArray[i]["imgUrl"] = "../../../../icon/codeFile.png";
+              tempResArray[i]["imgUrl"] = "../../icon/codeFile.png";
               var tempSize = tempResArray[i].fileSize;
               // 判断文件大小
               if (tempSize == null) {
@@ -214,7 +214,7 @@ Page({
               tempResArray[i]["cdOrDownLoad"] = tempResArray[i].filePath;
               tempFolderList.push(tempResArray[i]);
             } else if (filter.match(pattZip)) {
-              tempResArray[i]["imgUrl"] = "../../../../icon/zip.png";
+              tempResArray[i]["imgUrl"] = "../../icon/zip.png";
               var tempSize = tempResArray[i].fileSize;
               // 判断文件大小
               if (tempSize == null) {
@@ -228,7 +228,7 @@ Page({
               tempResArray[i]["cdOrDownLoad"] = tempResArray[i].filePath;
               tempFolderList.push(tempResArray[i]);
             } else if (filter.match(pattImg)){
-              tempResArray[i]["imgUrl"] = "../../../../icon/imgFile.png";
+              tempResArray[i]["imgUrl"] = "../../icon/imgFile.png";
               var tempSize = tempResArray[i].fileSize;
               // 判断文件大小
               if (tempSize == null) {
@@ -242,7 +242,7 @@ Page({
               tempResArray[i]["cdOrDownLoad"] = tempResArray[i].filePath;
               tempFolderList.push(tempResArray[i]);
             }else{
-              tempResArray[i]["imgUrl"] = "../../../../icon/document.png";
+              tempResArray[i]["imgUrl"] = "../../icon/document.png";
               var tempSize = tempResArray[i].fileSize;
               // 判断文件大小
               if (tempSize == null) {
@@ -521,9 +521,9 @@ Page({
     var tempList = this.data.folderList
     if (this.data.chooseAll == "全选"){
       this.setData({
-        deleteImgUrl: "../../../../icon/deleteFolder.png",
-        moveImgUrl: "../../../../icon/move.png",
-        renameImgUrl: "../../../../icon/rename.png"
+        deleteImgUrl: "../../icon/deleteFolder.png",
+        moveImgUrl: "../../icon/move.png",
+        renameImgUrl: "../../icon/rename.png"
       })
       this.setData({
         chooseAll: "全不选"
@@ -535,9 +535,9 @@ Page({
       }
     }else{
       this.setData({
-        renameImgUrl: "../../../../icon/rename.png",
-        deleteImgUrl: "../../../../icon/deleteBlogClass.png",
-        moveImgUrl: "../../../../icon/move-hide.png"
+        renameImgUrl: "../../icon/rename.png",
+        deleteImgUrl: "../../icon/deleteBlogClass.png",
+        moveImgUrl: "../../icon/move-hide.png"
       })
       this.setData({
         chooseAll: "全选"
@@ -607,19 +607,19 @@ Page({
   _taBarState: function(){
     if (this.data.selectedArray.length == 0) {
       this.setData({
-        renameImgUrl: "../../../../icon/rename.png",
-        deleteImgUrl: "../../../../icon/deleteBlogClass.png",
-        moveImgUrl: "../../../../icon/move-hide.png"
+        renameImgUrl: "../../icon/rename.png",
+        deleteImgUrl: "../../icon/deleteBlogClass.png",
+        moveImgUrl: "../../icon/move-hide.png"
       })
     } else if (this.data.selectedArray.length > 1) {
       this.setData({
-        renameImgUrl: "../../../../icon/rename.png"
+        renameImgUrl: "../../icon/rename.png"
       })
     } else {
       this.setData({
-        renameImgUrl: "../../../../icon/renameFolder.png",
-        deleteImgUrl: "../../../../icon/deleteFolder.png",
-        moveImgUrl: "../../../../icon/move.png"
+        renameImgUrl: "../../icon/renameFolder.png",
+        deleteImgUrl: "../../icon/deleteFolder.png",
+        moveImgUrl: "../../icon/move.png"
       })
     }
   },

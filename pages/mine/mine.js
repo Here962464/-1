@@ -1,37 +1,10 @@
-var floor01 = require("../templates/mine-template/floor01/floor01.js");
 const app = getApp();
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    haha: floor01.haha,
-    userInfo: {
-      nickName:'',
-      avatarUrl:'',
-      gender:"亦男亦女"
-    },
-    show:false,
-    showListUrl:[
-      '../details/blogList/blogList',
-      '../details/followList/followList',
-      '../details/fansList/fansList'
-    ]
-  
-  },
-  showList: function(e){
-    console.log(e)
-    var tempIndex = e.currentTarget.dataset.index;
-    var tempUrl = this.data.showListUrl[tempIndex];
-    wx.navigateTo({
-      url: tempUrl,
-    })
-  },
-  loginByMail: function(){
-    var _this = this;
-    wx.navigateTo({
-      url:"../details/loginByMail/loginByMail"
-    })
+    show:false
   },
   onShow: function () {
     this.onLoad();
@@ -79,28 +52,5 @@ Page({
     wx.switchTab({
       url: '../home/home'
     })
-  },
-  loadUserInfo: function(data){
-    var _this = this;
-    // 转换性别
-    var gender = data.userInfo.gender;
-    if (!gender) {
-      gender = "未知";
-    } else if (gender == 1) {
-      gender = "男";
-    } else {
-      gender = '女';
-    }
-    var userNickname = data.userInfo.nickName;
-    var iconPath = data.userInfo.avatarUrl;
-    console.log(data)
-    _this.setData({
-      show: true,
-      userInfo: {
-        userNickname: userNickname,
-        avatarUrl: iconPath,
-        gender: gender
-      }
-    });
   }
 })

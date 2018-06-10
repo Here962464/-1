@@ -8,7 +8,7 @@
     </view>
     <view bindtap='changeCover' class='floor3'>
       <text class='text'>更换封面</text>
-      <image class='go' src='../../../../../icon/go.png'></image>
+      <image class='go' src='../../../icon/go.png'></image>
       <image class='iconPath' src="{{iconPath}}"></image>
     </view>
     <view class='floor4'>

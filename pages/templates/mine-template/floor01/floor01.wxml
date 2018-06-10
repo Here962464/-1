@@ -1,9 +1,0 @@
-<template name="floor01">
-  <view class='floor01'>
-    <view data-index="{{index}}" bindtap='showList' class='floor01-item fl' wx:for="{{haha}}" wx:key="info">
-      <text>{{item.star}}</text>
-      <text class='str'>{{item.name}}</text>
-    </view>
-  </view>
-  <view class='space'></view>
-</template>

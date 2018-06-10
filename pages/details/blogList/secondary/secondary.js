@@ -2,13 +2,13 @@ var app = getApp();
 var blogUrl = app.globalData.globalBlogUrl;
 Page({
   data: {
-    blogList:[],
+    blogList: [],
     pageSize: 10,
     total: 0,
     scrollY: 0,
-    blogTypeName:"",
-    classify:"",
-    hasBlog:true
+    blogTypeName: "",
+    classify: "",
+    hasBlog: true
   },
 
   /**
@@ -84,7 +84,7 @@ Page({
     // map['reward'] = 0;
     //列排序  按照时间降序 DESC  升序 ASC  不加默认按时间降序
     map['arrange'] = "DESC";
-    
+
     var mapString = JSON.stringify(map).slice(1);
     var value = mapString.substr(0, mapString.length - 1);
     wx.request({
