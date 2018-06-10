@@ -275,20 +275,23 @@ Page({
   // 下载文件
   uploadFile:function(e){
     console.log(e.currentTarget.id)
-    var tempPath = e.currentTarget.id;
-    const downloadTask = wx.downloadFile({
-      url: tempPath, //仅为示例，并非真实的资源
-      success: function (res) {
-        wx.playVoice({
-          filePath: res.tempFilePath
-        })
-      }
-    })
-    downloadTask.onProgressUpdate((res) => {
-      console.log('下载进度', res.progress)
-      console.log('已经下载的数据长度', res.totalBytesWritten)
-      console.log('预期需要下载的数据总长度', res.totalBytesExpectedToWrite)
-    })
+    // var tempPath = e.currentTarget.id;
+    // wx.saveFile({
+    //   tempFilePath: 'https://www.sharismspace.com/group1/M00/00/00/CmnzgVq7AGeAMlkQAAGQMuVvS3M741.jpg'
+    // })
+    // const downloadTask = wx.downloadFile({
+    //   url: "https://www.sharismspace.com/group1/M00/00/00/CmnzgVq7AGeAMlkQAAGQMuVvS3M741.jpg", //仅为示例，并非真实的资源
+    //   success: function (res) {
+    //     wx.playVoice({
+    //       filePath: res.tempFilePath
+    //     })
+    //   }
+    // })
+    // downloadTask.onProgressUpdate((res) => {
+    //   console.log('下载进度', res.progress)
+    //   console.log('已经下载的数据长度', res.totalBytesWritten)
+    //   console.log('预期需要下载的数据总长度', res.totalBytesExpectedToWrite)
+    // })
   },
   // 进入某个文件夹
   cdFolder: function(e){
@@ -462,10 +465,9 @@ Page({
     })
   },
   _upload: function(){
-    wx.chooseImage({
-      success: function(res){
-        console.log(res)
-      }
+    // 小程序目前不支持打开本地文件管理
+    wx.chooseInvoiceTitle({
+      
     })
   },
   // 编辑文件

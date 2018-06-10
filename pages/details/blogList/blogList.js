@@ -125,6 +125,14 @@ Page({
       })
     }
   },
+  // 博客详情
+  blogDetail: function(e){
+    console.log(e.currentTarget.id);
+    app.globalData.blogDetailId = e.currentTarget.id;
+    wx.navigateTo({
+      url: 'blogDetails/blogDetails'
+    })
+  },
   // 点击文集列表
   isSons: function (e) {
     console.log(e.currentTarget.dataset.index);

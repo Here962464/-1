@@ -1,7 +1,7 @@
 <view class='blogTypeList'>
   <!--重复代码  可以封装  -->
   <scroll-view wx:if="{{hasBlog}}" style='height:{{scrollY}}px;' bindscrolltolower="startLoading" scroll-y="true" scroll-with-animation="true" lower-threshold>
-    <view data-index="{{index}}" class='blogBlock' wx:for="{{blogList}}">
+    <view catchtap='blogDetail' id="{{item.id}}" data-index="{{index}}" class='blogBlock' wx:for="{{blogList}}">
         <view class='title'>{{item.blogTitle}}</view>
         <view class='baseBlog'>{{item.baseBlog}}</view>
         <view class='detail'>

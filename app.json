@@ -1,11 +1,16 @@
 {
   "pages": [
+    "pages/mine/mine",
+    "pages/home/home",
+    "pages/details/blogList/blogList",
+    "pages/details/blogList/blogDetails/blogDetails",
     "pages/details/fileLib/fileLib",
     "pages/details/photoLib/photoLib",
-    "pages/mine/mine",
-    "pages/details/blogList/blogList",
-    "pages/home/home",
-    "pages/details/blogList/secondary/secondary",  "pages/details/photoLib/photoes/photoes",   "pages/details/photoLib/resetAlbum/resetAlbum", "pages/details/photoLib/photoes/photoDetails/photoDetails",  "pages/details/photoLib/photoes/addPhotoes/addPhotoes","pages/details/photoLib/addAlbum/addAlbum",
+    "pages/details/blogList/secondary/secondary", 
+    "pages/details/photoLib/photoes/photoes",   
+    "pages/details/photoLib/resetAlbum/resetAlbum", "pages/details/photoLib/photoes/photoDetails/photoDetails", 
+    "pages/details/photoLib/photoes/addPhotoes/addPhotoes",
+    "pages/details/photoLib/addAlbum/addAlbum",
     "pages/details/fileLib/uploadFile/uploadFile"
   ],
   "window": {

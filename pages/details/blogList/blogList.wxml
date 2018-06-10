@@ -17,7 +17,7 @@
   </view>
   <view class='articleList' wx:if="{{isblog}}">
     <scroll-view style='height:{{scrollY}}px;' bindscrolltolower="startLoading" scroll-y="true" scroll-with-animation="true" lower-threshold>
-      <view data-index="{{index}}" class='blogBlock' wx:for="{{blogList}}">
+      <view catchtap='blogDetail' id="{{item.id}}" data-index="{{index}}" class='blogBlock' wx:for="{{blogList}}">
         <view class='title'>{{item.blogTitle}}</view>
         <view class='baseBlog'>{{item.baseBlog}}</view>
         <view class='detail'>

@@ -40,6 +40,7 @@ App({
   globalData: {
     albumName:"",
     blogListIndex:"",
+    blogDetailId:"",
     blogTypeName:"",
     classify:"",
     albumId:"",

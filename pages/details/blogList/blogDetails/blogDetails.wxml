@@ -1,0 +1,13 @@
+<import src="wxParse/wxParse.wxml"/>
+<view class='blogDetails'>
+  <view class='blogTitle'>{{blogTitle}}</view>
+  <view class='floor1'>
+    <view class='blogNature'>{{nature}}</view>
+    <view class='classAA'>{{classAA}}</view>
+    <view class='classAa'>{{classAa}}</view>
+  </view>
+  <view class='blogUpdateDate'>{{updateDate}}</view>
+  <view class="wxParse blogContent">
+    <template is="wxParse" data="{{wxParseData:blogContent.nodes}}"/>
+  </view>
+</view> 
